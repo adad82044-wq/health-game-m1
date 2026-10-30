@@ -56,6 +56,11 @@ window.GAME_CONFIG = {
         label: "BG-01: มุมอับหลังอาคาร 3",
         theme: "alley"
       },
+      BG_BAS_OFFER: {
+        path: "assets/backgrounds/bg-bas-offer.png",
+        label: "BG: บาสยื่นพอตในซอกตึก",
+        theme: "alley"
+      },
       BG_02: {
         path: "assets/backgrounds/bg-02.png",
         label: "BG-02: ลานหน้าเสาธงตอนเช้า",

@@ -58,8 +58,7 @@ window.STORY_DATA = {
     },
     {
       id: "open_5",
-      bg: "BG_01",
-      cg: "CG_BAS_OFFER",
+      bg: "BG_BAS_OFFER",
       sprites: [],
       activeSprite: "",
       speaker: "บาส",
@@ -69,8 +68,7 @@ window.STORY_DATA = {
     },
     {
       id: "open_choice",
-      bg: "BG_01",
-      cg: "CG_BAS_OFFER",
+      bg: "BG_BAS_OFFER",
       sprites: [],
       activeSprite: "",
       speaker: "บรรยาย",
@@ -113,8 +111,7 @@ window.STORY_DATA = {
   // ==========================================================================
   refuse_family: [
     {
-      bg: "BG_01",
-      cg: "CG_BAS_OFFER",
+      bg: "BG_BAS_OFFER",
       sprites: [],
       activeSprite: "",
       speaker: "บาส",
@@ -128,8 +125,7 @@ window.STORY_DATA = {
 
   refuse_sport: [
     {
-      bg: "BG_01",
-      cg: "CG_BAS_OFFER",
+      bg: "BG_BAS_OFFER",
       sprites: [],
       activeSprite: "",
       speaker: "บาส",
@@ -143,8 +139,7 @@ window.STORY_DATA = {
 
   refuse_redirect: [
     {
-      bg: "BG_01",
-      cg: "CG_BAS_OFFER",
+      bg: "BG_BAS_OFFER",
       sprites: [],
       activeSprite: "",
       speaker: "บาส",
@@ -262,12 +257,11 @@ window.STORY_DATA = {
     // แบบที่ 1: ด้านระเบียบวินัยและครอบครัว
     BAD_A: [
       {
-        bg: "BG_01",
-        sprites: ["SPRITE_FRIENDS", "SPRITE_BAS"],
-        activeSprite: "SPRITE_BAS",
+        bg: "BG_BAS_OFFER",
+        sprites: [],
+        activeSprite: "",
         speaker: "บาส",
         mood: "smirk",
-        voice: "assets/voices/18_bas_cheer.mp3",
         text: "มันต้องยังงี้ดิวะเพื่อน มาๆ ดูดลึกๆ เลย!"
       },
       {
@@ -322,12 +316,11 @@ window.STORY_DATA = {
     // แบบที่ 2: ด้านสุขภาพและสมรรถภาพร่างกายเฉพาะหน้า
     BAD_B: [
       {
-        bg: "BG_01",
-        sprites: ["SPRITE_FRIENDS", "SPRITE_BAS"],
-        activeSprite: "SPRITE_BAS",
+        bg: "BG_BAS_OFFER",
+        sprites: [],
+        activeSprite: "",
         speaker: "บาส",
         mood: "smirk",
-        voice: "assets/voices/18_bas_cheer.mp3",
         text: "มันต้องยังงี้ดิวะเพื่อน มาๆ ดูดลึกๆ เลย!"
       },
       {
@@ -382,12 +375,11 @@ window.STORY_DATA = {
     // แบบที่ 3: ด้านการเงินและความสัมพันธ์ลวง
     BAD_C: [
       {
-        bg: "BG_01",
-        sprites: ["SPRITE_FRIENDS", "SPRITE_BAS"],
-        activeSprite: "SPRITE_BAS",
+        bg: "BG_BAS_OFFER",
+        sprites: [],
+        activeSprite: "",
         speaker: "บาส",
         mood: "smirk",
-        voice: "assets/voices/18_bas_cheer.mp3",
         text: "มันต้องยังงี้ดิวะเพื่อน มาๆ ดูดลึกๆ เลย!"
       },
       {
