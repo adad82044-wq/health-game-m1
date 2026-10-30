@@ -155,7 +155,6 @@ window.VNEngine = {
 
   returnToTitle() {
     clearTimeout(this.state.typingTimer);
-    SoundManager.stopVoice();
     this.gameScreen.classList.remove("active");
     this.endingModal.classList.remove("visible");
     this.startScreen.classList.add("active");
@@ -221,13 +220,6 @@ window.VNEngine = {
     if (step.sfx) {
       SoundManager.playSFX(step.sfx);
     }
-
-    // เล่นเสียงพากย์ประจำประโยค (Voiceover)
-    const voicePath =
-      this.state.gender === "female" && step.voiceFemale
-        ? step.voiceFemale
-        : step.voiceMale || step.voice || null;
-    SoundManager.playVoice(voicePath);
 
     // 1. อัปเดตฉากหลัง (Background)
     if (step.bg) {
@@ -441,7 +433,6 @@ window.VNEngine = {
   },
 
   showEndingScreen(endingData) {
-    SoundManager.stopVoice();
     this.state.seenEndings.add(endingData.code);
     if (endingData.type === "GOOD") {
       SoundManager.playSFX("chime");

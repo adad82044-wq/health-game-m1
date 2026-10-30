@@ -1,17 +1,14 @@
 /**
  * ============================================================================
- * ระบบเสียงพากย์และเสียงประกอบ (AUDIO.JS)
+ * ระบบเสียงประกอบเหตุการณ์ (AUDIO.JS - Web Audio API)
  * ============================================================================
- * 1. ระบบเล่นไฟล์เสียงพากย์ (Voiceover .mp3/.wav จากโฟลเดอร์ assets/voices/)
- * 2. ระบบเสียงประกอบเหตุการณ์ (SFX) โดยตัดเสียงพิมพ์ตัวอักษรออกแล้ว
+ * มีเฉพาะเสียงคลิกปุ่มเบาๆ และเสียงประกอบจังหวะสำคัญ (ไม่มีเสียงพิมพ์ และไม่มีเสียงพากย์)
  * ============================================================================
  */
 
 window.SoundManager = {
   ctx: null,
   muted: false,
-  currentVoiceAudio: null,
-  lastVoiceSrc: null,
 
   init() {
     if (!this.ctx) {
@@ -27,49 +24,10 @@ window.SoundManager = {
 
   toggleMute() {
     this.muted = !this.muted;
-    if (this.muted) {
-      this.stopVoice();
-    }
     return this.muted;
   },
 
-  // หยุดเสียงพากย์ที่กำลังเล่นอยู่ (เช่น เมื่อกดข้ามไปประโยคถัดไป)
-  stopVoice() {
-    if (this.currentVoiceAudio) {
-      try {
-        this.currentVoiceAudio.pause();
-        this.currentVoiceAudio.currentTime = 0;
-      } catch (e) {}
-      this.currentVoiceAudio = null;
-    }
-  },
-
-  // เล่นไฟล์เสียงพากย์ของประโยคปัจจุบัน
-  playVoice(voicePath) {
-    this.stopVoice();
-    this.lastVoiceSrc = voicePath || null;
-
-    if (this.muted || !voicePath) return;
-
-    try {
-      const cacheBustedUrl = voicePath.includes("?") ? voicePath : `${voicePath}?v=2`;
-      const audio = new Audio(cacheBustedUrl);
-      audio.volume = 1.0;
-      this.currentVoiceAudio = audio;
-      audio.play().catch(() => {
-        // กรณียังไม่มีไฟล์เสียงพากย์ในโฟลเดอร์ จะข้ามไปอย่างเงียบๆ ไม่เกิด Error
-      });
-    } catch (e) {}
-  },
-
-  // กดฟังเสียงพากย์ประโยคเดิมซ้ำ
-  replayLastVoice() {
-    if (this.lastVoiceSrc) {
-      this.playVoice(this.lastVoiceSrc);
-    }
-  },
-
-  // เสียงคลิกปุ่มเบาๆ เฉพาะตอนกดเลือกช้อยส์หรือเปลี่ยนหน้า
+  // เสียงคลิกปุ่มเบาๆ
   playClick() {
     this.init();
     if (this.muted || !this.ctx) return;
