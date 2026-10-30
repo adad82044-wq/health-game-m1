@@ -57,7 +57,7 @@ window.GAME_CONFIG = {
         theme: "alley"
       },
       BG_BAS_OFFER: {
-        path: "assets/backgrounds/bg-bas-offer.png",
+        path: "assets/backgrounds/bg-bas-offer.png?v=2",
         label: "BG: บาสยื่นพอตในซอกตึก",
         theme: "alley"
       },
