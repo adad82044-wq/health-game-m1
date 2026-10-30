@@ -52,7 +52,8 @@ window.SoundManager = {
     if (this.muted || !voicePath) return;
 
     try {
-      const audio = new Audio(voicePath);
+      const cacheBustedUrl = voicePath.includes("?") ? voicePath : `${voicePath}?v=2`;
+      const audio = new Audio(cacheBustedUrl);
       audio.volume = 1.0;
       this.currentVoiceAudio = audio;
       audio.play().catch(() => {
