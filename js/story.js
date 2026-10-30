@@ -59,23 +59,23 @@ window.STORY_DATA = {
     {
       id: "open_5",
       bg: "BG_01",
-      sprites: ["SPRITE_FRIENDS", "SPRITE_BAS"],
-      activeSprite: "SPRITE_BAS",
+      cg: "CG_BAS_OFFER",
+      sprites: [],
+      activeSprite: "",
       speaker: "บาส",
       mood: "challenge",
       sfx: "heartbeat",
-      voice: "assets/voices/05_bas_offer.mp3",
       text: "เห้ย {name}... ลองดูเปล่า ดีนะเว้ย กลิ่นแตงโมอย่างหอมเลย ไม่แสบคอด้วย ของนำเข้าเลยนะมึง ลองดูสักทีจะได้คุยกับพวกกูรู้เรื่อง"
     },
     {
       id: "open_choice",
       bg: "BG_01",
-      sprites: ["SPRITE_FRIENDS", "SPRITE_BAS"],
-      activeSprite: "SPRITE_BAS",
+      cg: "CG_BAS_OFFER",
+      sprites: [],
+      activeSprite: "",
       speaker: "บรรยาย",
       mood: "pressure",
       sfx: "heartbeat",
-      voice: "assets/voices/06_narrator_choice.mp3",
       text: "สายตาของเพื่อนทั้ง 3 คนกำลังจ้องมองมาที่คุณ... บาสยื่นบุหรี่ไฟฟ้ามาจ่อตรงหน้า คุณจะตอบว่าอย่างไร?",
       choices: [
         {

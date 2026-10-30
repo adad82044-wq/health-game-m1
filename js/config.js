@@ -98,6 +98,11 @@ window.GAME_CONFIG = {
     },
 
     cgs: {
+      CG_BAS_OFFER: {
+        path: "assets/cgs/cg-bas-offer.png",
+        label: "CG: บาสยื่นพอตหลังตึก",
+        theme: "bas_offer"
+      },
       CG_GOOD: {
         path: "assets/cgs/cg-good.png",
         label: "CG-GOOD: รอดพ้นหน้าเสาธง",
