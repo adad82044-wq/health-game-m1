@@ -1,0 +1,749 @@
+/* ==========================================================================
+   สไตล์หน้าตาเกม 2D Visual Novel (STYLE.CSS)
+   รองรับทั้งหน้าจอมือถือ (Portrait/Landscape) และคอมพิวเตอร์
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Sarabun:wght@400;500;600;700&display=swap');
+
+:root {
+  --vn-bg-dark: #0b0f19;
+  --vn-panel-bg: rgba(15, 23, 42, 0.90);
+  --vn-panel-border: rgba(148, 163, 184, 0.35);
+  --vn-gold: #f59e0b;
+  --vn-gold-light: #fde68a;
+  --vn-primary: #3b82f6;
+  --vn-danger: #ef4444;
+  --vn-success: #10b981;
+  --vn-text: #f8fafc;
+  --vn-muted: #cbd5e1;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--vn-bg-dark);
+  color: var(--vn-text);
+  font-family: 'Kanit', 'Sarabun', sans-serif;
+  user-select: none;
+}
+
+/* ==========================================================================
+   Screen Management
+   ========================================================================== */
+.screen {
+  position: fixed;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.screen.active {
+  display: flex;
+}
+
+/* ==========================================================================
+   1. หน้าจอเริ่มต้นและเลือกตัวละคร (Start & Gender Select Screen)
+   ========================================================================== */
+#start-screen {
+  background: radial-gradient(circle at 50% 25%, #1e293b 0%, #090d16 100%);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.start-card {
+  width: 100%;
+  max-width: 520px;
+  background: rgba(30, 41, 59, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 24px;
+  padding: 28px 24px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(12px);
+  text-align: center;
+}
+
+.subject-pill {
+  display: inline-block;
+  background: rgba(59, 130, 246, 0.2);
+  border: 1px solid rgba(96, 165, 250, 0.5);
+  color: #93c5fd;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 4px 14px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+
+.game-title {
+  font-size: clamp(1.6rem, 5vw, 2.25rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, #ffffff 0%, #93c5fd 50%, #fbbf24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 6px;
+}
+
+.game-subtitle {
+  font-size: 0.95rem;
+  color: var(--vn-muted);
+  margin-bottom: 22px;
+}
+
+.section-label {
+  font-size: 0.9rem;
+  color: #e2e8f0;
+  font-weight: 500;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.gender-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.gender-btn {
+  background: rgba(15, 23, 42, 0.75);
+  border: 2px solid rgba(148, 163, 184, 0.25);
+  border-radius: 16px;
+  padding: 14px 10px;
+  color: var(--vn-text);
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.gender-btn:hover {
+  border-color: rgba(255, 255, 255, 0.45);
+  transform: translateY(-2px);
+}
+
+.gender-btn.selected {
+  background: linear-gradient(180deg, rgba(37, 99, 235, 0.35), rgba(29, 78, 216, 0.15));
+  border-color: #60a5fa;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.35);
+}
+
+.gender-emoji {
+  font-size: 2.1rem;
+}
+
+.gender-title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.gender-desc {
+  font-size: 0.78rem;
+  color: #94a3b8;
+}
+
+.name-input-group {
+  margin-bottom: 22px;
+  text-align: left;
+}
+
+.name-input {
+  width: 100%;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  border-radius: 12px;
+  padding: 12px 14px;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.name-input:focus {
+  border-color: #60a5fa;
+}
+
+.primary-start-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  border: 1px solid #60a5fa;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 1.15rem;
+  font-weight: 600;
+  padding: 14px 20px;
+  border-radius: 14px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.6);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.primary-start-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px -5px rgba(37, 99, 235, 0.75);
+}
+
+.primary-start-btn:active {
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   2. หน้าจอหลักขณะเล่นเกม (Visual Novel Stage)
+   ========================================================================== */
+#vn-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #0f172a;
+}
+
+/* แถบควบคุมด้านบน */
+.top-hud {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  z-index: 30;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+}
+
+.asset-badge {
+  pointer-events: auto;
+  background: rgba(15, 23, 42, 0.78);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  color: #93c5fd;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+}
+
+.hud-actions {
+  display: flex;
+  gap: 8px;
+  pointer-events: auto;
+}
+
+.hud-btn {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #f8fafc;
+  font-family: inherit;
+  font-size: 0.82rem;
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: background 0.2s;
+}
+
+.hud-btn:hover {
+  background: rgba(30, 41, 59, 0.95);
+}
+
+/* ชั้นภาพฉากหลัง (Background Layer) */
+#bg-layer {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 0.5s ease-in-out;
+  z-index: 1;
+}
+
+/* ชั้นภาพ CG พิเศษ (Event Cutscene Layer) */
+#cg-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+#cg-layer.active {
+  opacity: 1;
+}
+
+.cg-frame {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+/* ชั้นสไปรต์ตัวละคร 2D (Character Sprite Layer) */
+#sprite-layer {
+  position: absolute;
+  inset: 0;
+  bottom: 180px;
+  z-index: 5;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 16px;
+  pointer-events: none;
+  padding: 0 12px;
+}
+
+.sprite-item {
+  max-height: 76vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+}
+
+.sprite-item img {
+  max-height: 68vh;
+  max-width: 85vw;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.65));
+}
+
+.sprite-item.is-speaking {
+  transform: scale(1.03) translateY(-4px);
+  filter: brightness(1.05);
+  z-index: 6;
+}
+
+.sprite-item.is-dimmed {
+  transform: scale(0.95);
+  filter: brightness(0.65);
+  opacity: 0.88;
+}
+
+/* ==========================================================================
+   3. กล่องบทสนทนาสไตล์เกมจีบสาว / Visual Novel (Dialogue Box)
+   ========================================================================== */
+.dialogue-wrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  padding: 12px 16px 18px;
+  background: linear-gradient(180deg, transparent 0%, rgba(2, 6, 23, 0.85) 35%, rgba(2, 6, 23, 0.96) 100%);
+  display: flex;
+  justify-content: center;
+}
+
+#dialogue-box {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  min-height: 150px;
+  background: var(--vn-panel-bg);
+  border: 2px solid var(--vn-panel-border);
+  border-radius: 20px;
+  padding: 24px 22px 18px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  transition: border-color 0.25s;
+}
+
+#dialogue-box:hover {
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+#dialogue-box.thought-mode {
+  background: rgba(30, 41, 59, 0.92);
+  border-style: dashed;
+  border-color: #93c5fd;
+}
+
+/* ป้ายชื่อผู้พูด (Speaker Nameplate) */
+.speaker-header {
+  position: absolute;
+  top: -18px;
+  left: 22px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#speaker-badge {
+  background: #2563eb;
+  border: 2px solid #60a5fa;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.98rem;
+  padding: 4px 16px;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+}
+
+#speaker-role {
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  color: #cbd5e1;
+  font-size: 0.76rem;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+/* อวาตาร์ตัวเอก (คล้ายเกมต้นแบบรูปที่ 2) */
+#player-avatar-box {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  border: 3px solid var(--vn-gold);
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #1e293b;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+  margin-top: 4px;
+}
+
+#player-avatar-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dialogue-content {
+  flex: 1;
+  padding-top: 4px;
+}
+
+#dialogue-text {
+  font-family: 'Sarabun', 'Kanit', sans-serif;
+  font-size: clamp(1.05rem, 2.8vw, 1.25rem);
+  line-height: 1.65;
+  color: #f8fafc;
+  min-height: 3.3em;
+}
+
+#dialogue-box.thought-mode #dialogue-text {
+  font-style: italic;
+  color: #bfdbfe;
+}
+
+#next-indicator {
+  position: absolute;
+  right: 18px;
+  bottom: 12px;
+  font-size: 0.82rem;
+  color: var(--vn-gold-light);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0;
+  transition: opacity 0.2s;
+  animation: bounceRight 1s infinite alternate;
+}
+
+#next-indicator.visible {
+  opacity: 1;
+}
+
+@keyframes bounceRight {
+  from { transform: translateX(0); }
+  to { transform: translateX(5px); }
+}
+
+/* ==========================================================================
+   4. หน้าต่างตัวเลือก 4 ทาง (Strategic Choice Selection Overlay)
+   ========================================================================== */
+#choices-overlay {
+  position: absolute;
+  inset: 0;
+  bottom: 165px;
+  z-index: 25;
+  background: rgba(2, 6, 23, 0.68);
+  backdrop-filter: blur(5px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+#choices-overlay.visible {
+  display: flex;
+}
+
+.choices-container {
+  width: 100%;
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.choices-prompt-banner {
+  text-align: center;
+  background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.25), transparent);
+  border-top: 1px solid rgba(251, 191, 36, 0.45);
+  border-bottom: 1px solid rgba(251, 191, 36, 0.45);
+  color: var(--vn-gold-light);
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 6px 12px;
+  margin-bottom: 4px;
+}
+
+#choices-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.choice-btn {
+  width: 100%;
+  text-align: left;
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);
+  border: 2px solid rgba(148, 163, 184, 0.4);
+  border-radius: 14px;
+  padding: 12px 16px;
+  color: #ffffff;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+}
+
+.choice-btn:hover {
+  transform: translateY(-2px) scale(1.01);
+  border-color: var(--vn-gold);
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.35) 0%, rgba(15, 23, 42, 0.95) 100%);
+}
+
+.choice-btn.choice-danger:hover {
+  border-color: #f87171;
+  background: linear-gradient(135deg, rgba(185, 28, 28, 0.35) 0%, rgba(15, 23, 42, 0.95) 100%);
+}
+
+.choice-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+  font-size: 0.78rem;
+}
+
+.choice-num {
+  color: var(--vn-gold-light);
+  font-weight: 600;
+}
+
+.choice-tag {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 8px;
+  border-radius: 6px;
+  color: #cbd5e1;
+}
+
+.choice-body {
+  font-size: clamp(0.95rem, 2.5vw, 1.08rem);
+  font-weight: 500;
+  color: #f8fafc;
+}
+
+/* ==========================================================================
+   5. หน้าสรุปบทเรียนและฉากจบ (Ending & Debriefing Modal)
+   ========================================================================== */
+#ending-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(2, 6, 23, 0.88);
+  backdrop-filter: blur(10px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+#ending-modal.visible {
+  display: flex;
+}
+
+.ending-card {
+  width: 100%;
+  max-width: 680px;
+  max-height: 92vh;
+  overflow-y: auto;
+  background: #0f172a;
+  border: 2px solid rgba(148, 163, 184, 0.35);
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+}
+
+.ending-badge {
+  display: inline-block;
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.badge-good {
+  background: rgba(16, 185, 129, 0.2);
+  border: 1px solid #34d399;
+  color: #6ee7b7;
+}
+
+.badge-bad {
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid #f87171;
+  color: #fca5a5;
+}
+
+#end-random-slot {
+  display: block;
+  font-size: 0.82rem;
+  color: #fbbf24;
+  margin-bottom: 6px;
+}
+
+#end-title {
+  font-size: clamp(1.35rem, 4vw, 1.75rem);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+#end-cg-preview {
+  width: 100%;
+  height: 190px;
+  border-radius: 14px;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  margin-bottom: 14px;
+}
+
+#end-summary {
+  font-family: 'Sarabun', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+  margin-bottom: 16px;
+}
+
+.lesson-box {
+  background: rgba(30, 41, 59, 0.75);
+  border-left: 4px solid #3b82f6;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 18px;
+}
+
+.lesson-box h4 {
+  font-size: 0.95rem;
+  color: #93c5fd;
+  margin-bottom: 8px;
+}
+
+#end-lessons {
+  padding-left: 18px;
+  font-family: 'Sarabun', sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: #cbd5e1;
+}
+
+#end-lessons li {
+  margin-bottom: 6px;
+}
+
+.ending-progress {
+  text-align: center;
+  font-size: 0.82rem;
+  color: #94a3b8;
+  margin-bottom: 14px;
+}
+
+.ending-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.btn-replay {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  border: none;
+  color: #0f172a;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 12px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.btn-restart {
+  background: rgba(51, 65, 85, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  color: #f8fafc;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 12px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+/* เอฟเฟกต์หน้าจอสั่น */
+@keyframes shakeScreen {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-8px, 4px); }
+  40% { transform: translate(8px, -4px); }
+  60% { transform: translate(-6px, -3px); }
+  80% { transform: translate(6px, 3px); }
+}
+
+.shake-anim {
+  animation: shakeScreen 0.4s ease;
+}
+
+/* ปรับแต่งสำหรับจอมือถือแนวตั้ง */
+@media (max-width: 640px) {
+  #dialogue-box {
+    min-height: 145px;
+    padding: 22px 14px 16px;
+  }
+
+  #player-avatar-box {
+    width: 52px;
+    height: 52px;
+  }
+
+  #choices-overlay {
+    bottom: 145px;
+    padding: 10px;
+  }
+
+  .ending-actions {
+    grid-template-columns: 1fr;
+  }
+}

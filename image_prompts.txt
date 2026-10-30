@@ -1,0 +1,81 @@
+================================================================================
+  MASTER IMAGE PROMPT GUIDE FOR 2D VISUAL NOVEL HEALTH GAME (ม.1 ANTI-VAPE)
+  สไตล์หลัก: Modern Anime / Webtoon Manhwa 2D Cel-Shaded Style
+  ใช้ได้กับ: Midjourney v6, DALL-E 3, Bing Image Creator, Stable Diffusion, Recraft
+================================================================================
+
+--------------------------------------------------------------------------------
+[คำแนะนำการใช้งาน]
+- คัดลอก Prompt ภาษาอังกฤษไปวางในเครื่องมือสร้างภาพ AI ได้ทันที
+- สัดส่วนภาพแนะนำ:
+  * ฉากหลังและ CG ฉากจบ: 16:9 (แนวนอน) หรือ 9:16 (แนวตั้งมือถือ)
+  * ตัวละคร Sprite: 3:4 หรือ 9:16 (เน้นฉากหลังขาวล้วนเพื่อตัดพื้นหลังง่าย)
+- หากใช้ Midjourney ให้เติมพารามิเตอร์ท้ายคำสั่ง: --ar 16:9 --v 6.0 --style raw --s 250
+- หากใช้ Stable Diffusion แนะนำ Negative Prompt ด้านล่างนี้ในทุกรูป
+
+[MASTER NEGATIVE PROMPT (สิ่งที่ต้องหลีกเลี่ยง)]:
+photorealistic, 3d render, western comic style, chibi, deformed anatomy, poorly drawn hands, missing fingers, extra limbs, distorted face, blurry, low quality, bad lineart, messy lines, watermark, signature, username, text, logo, oversaturated colors.
+
+================================================================================
+หมวดที่ 1: ภาพฉากหลัง (BACKGROUND SCENES)
+================================================================================
+
+[BG-01: มุมอับหลังอาคารเรียน (จุดเริ่มต้นเหตุการณ์)]
+Prompt:
+A secluded corner behind a secondary school building in Thailand, modern anime background art style, Makoto Shinkai aesthetic. Narrow alleyway between a weathered concrete school wall and overgrown grass, old air conditioning compressors mounted on the wall, rusty drainage pipe, dim afternoon shadows casting across the ground, a subtle haze of mist in the air, realistic lighting contrast between bright schoolyard in the far distance and dark intimate hiding spot in foreground, Kyoto Animation slice-of-life quality, highly detailed textures, vibrant yet grounded colors, 8k resolution, no characters. --ar 16:9
+
+[BG-02: ลานหน้าเสาธงเข้าแถวตอนเช้า (ฉากจบที่ดี)]
+Prompt:
+A wide outdoor schoolyard courtyard in a modern Asian high school during morning assembly, anime background art style. A tall national flagpole in the center, bright crisp morning golden sunlight shining down, long cast shadows on clean paved pavement, neat lines of school buildings surrounding the yard, lush tropical green trees, clear blue sky with gentle fluffy cumulus clouds, peaceful and uplifting atmosphere, Studio Ghibli and Makoto Shinkai scenery, sharp cel-shaded details, 8k resolution, no characters. --ar 16:9
+
+[BG-03: ห้องฝ่ายปกครองโรงเรียน (ฉากระเบียบวินัย)]
+Prompt:
+Inside a strict Asian school discipline and dean office, anime background art style. Cluttered wooden teacher's desk with stacks of report folders, student record books, warning posters on bulletin boards, metallic filing cabinets against the wall, vertical window blinds with sharp afternoon sunlight slicing through, quiet and tense atmospheric mood, clean linework, cel-shaded digital painting, realistic indoor ambient lighting, high quality 2D visual novel asset, 8k resolution, no characters. --ar 16:9
+
+================================================================================
+หมวดที่ 2: สไปรต์ตัวละคร (CHARACTER SPRITES - ตัดพื้นหลังง่าย)
+================================================================================
+
+[SPRITE-01: บาส (เพื่อนขาโจ๋ - ท่ายื่นพอตชวน)]
+Prompt:
+Waist-up character sprite of a 13-year-old Thai male teenage student named Bas, 2D modern anime visual novel style. He has messy stylish black hair, confident smirk, slightly mischievous eyes looking directly at viewer. Wearing a neat white short-sleeved school uniform shirt unbuttoned slightly at the collar, navy blue school shorts, school belt. He is extending his right hand forward directly toward the camera, holding a sleek modern colorful pod vape device between his fingers, offering it to the viewer. Clean sharp line art, vibrant cel-shaded coloring, Studio Mir aesthetic, isolated on pure solid white background, game sprite asset, full waist-up portrait, masterpiece. --ar 3:4
+
+[SPRITE-02: มินต์และอาร์ม (เพื่อนร่วมกลุ่มยืนพิงกำแพง)]
+Prompt:
+Group character sprite of two 13-year-old Thai teenage students, 2D anime visual novel style. On the left, a teenage girl with shoulder-length brown hair in a ponytail and silver hairclip, mischievous cool expression, holding a pastel-colored vape, exhaling a faint vapor cloud. On the right, a tall teenage boy with buzz-cut hair leaning casually against an invisible wall, arms crossed, cocky grin. Both wearing standard Thai junior high school uniforms (white shirt, navy blue bottoms). Cel-shaded digital anime art, crisp lineart, isolated on pure solid white background, visual novel character pack, high resolution. --ar 16:9
+
+[SPRITE-03: ครูอำนาจ (ครูฝ่ายปกครอง - สีหน้าดุตรวจจับ)]
+Prompt:
+Waist-up character sprite of a strict 45-year-old male Thai teacher in discipline department, 2D anime visual novel style. Stern square jaw, sharp intense eyes behind dark rectangular glasses, furrowed brows, commanding authoritative aura. Wearing a beige government teacher safari uniform with shoulder insignias. He is holding a handheld microphone in one hand and a black student conduct clipboard under his arm. Sharp distinct line art, professional cel-shaded coloring, isolated on pure solid white background, high quality visual novel asset. --ar 3:4
+
+================================================================================
+หมวดที่ 3: ไอคอนอวาตาร์ตัวเอก (PROTAGONIST AVATARS)
+================================================================================
+
+[AVATAR-M: นนท์ (ตัวเอกชาย - นักเรียนชาย ม.1)]
+Prompt:
+Profile avatar icon of a 13-year-old friendly Thai boy named Non, modern anime style. Neat black hair with slight bangs, earnest brown eyes, expressive and relatable face, slight nervous sweatdrop on cheek. Wearing white school uniform shirt with buttoned collar. Clean circular framing, sharp linework, cel-shaded coloring, approachable protagonist aesthetic, isolated on solid neutral background, high resolution profile picture. --ar 1:1
+
+[AVATAR-F: เนย (ตัวเอกหญิง - นักเรียนหญิง ม.1)]
+Prompt:
+Profile avatar icon of a 13-year-old relatable Thai girl named Noey, modern anime style. Bob cut dark hair with cute bangs, bright observant amber eyes, smart and expressive look, slight determined hesitation on face. Wearing white school uniform blouse with navy blue sailor neck ribbon. Clean circular framing, sharp digital anime illustration, cel-shaded, relatable female protagonist, isolated on solid neutral background, high resolution profile picture. --ar 1:1
+
+================================================================================
+หมวดที่ 4: ภาพเหตุการณ์ฉากจบ (EVENT CUTSCENE CGs)
+================================================================================
+
+[CG-GOOD: รอดพ้นด้วยไหวพริบ (เข้าแถวเช้า-มองแถวว่างอย่างโล่งใจ)]
+Prompt:
+First-person perspective anime event CG illustration. In a sunny outdoor school courtyard during morning flag-raising assembly, looking at an empty gap in the student queue where friends normally stand. In the foreground, the protagonist's hand rests at their side, feeling a profound sense of relief. In the far background on the school stage, a stern discipline teacher is speaking into a podium microphone. Uplifting cinematic morning sunlight, particles of light in the air, vibrant anime art style, Makoto Shinkai emotional atmosphere, highly detailed, 8k resolution. --ar 16:9
+
+[CG-BAD-A: ผลกระทบด้านครอบครัว (ห้องปกครอง-แม่ร้องไห้)]
+Prompt:
+Dramatic anime event cutscene CG inside a school discipline office. A 13-year-old teenage boy sitting with head hung low in deep guilt and shame on a wooden chair. Beside him, his distressed mother in modest work clothes is wiping tears with a handkerchief and bowing apologetically. Across the desk, a stern teacher points to confiscated vape devices on the table. Moody, somber cinematic lighting, desaturated cold color palette with dramatic shadows, emotional anime drama style, Studio Mir storytelling art, 8k resolution. --ar 16:9
+
+[CG-BAD-B: ผลกระทบด้านสุขภาพ (ทรุดข้างสนามบอล หายใจไม่ออก)]
+Prompt:
+Dramatic anime cutscene CG on a school soccer grass field. A 13-year-old teenage boy kneeling and collapsed on the grass, one hand clutching his tight chest and the other propped on the ground, coughing violently and gasping for air with wide terrified eyes and heavy sweat. In the background, soccer coach and teammates running over in panic. Dutch angle shot, intense motion blur, suffocating dramatic tension, sharp cel-shaded anime art, vivid green grass contrasting with grim scene, 8k resolution. --ar 16:9
+
+[CG-BAD-C: ผลกระทบด้านการเงิน (กระเป๋าตังค์แห้ง-ถูกทอดทิ้ง)]
+Prompt:
+Melancholic anime event cutscene CG from a close-up overhead table angle. An open worn student velcro wallet completely empty with no paper money inside, sitting next to two colorful empty disposable vape pods on a scratched wooden desk. In the blurred background, former friends are laughing and walking away through the classroom door without looking back. Cool muted blue-gray tones, lonely and regretful atmosphere, high detail on wallet textures and table scratches, Kyoto Animation emotional storytelling style, 8k resolution. --ar 16:9

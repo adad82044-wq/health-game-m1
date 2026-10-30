@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>ทางแยกหลังตึก | เกมจำลองสถานการณ์วิชาสุขศึกษา ม.1</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ========================================================================
+       1. หน้าจอเริ่มเกม & เลือกเพศตัวละคร (START SCREEN)
+       ======================================================================== -->
+  <section id="start-screen" class="screen active">
+    <div class="start-card">
+      <span class="subject-pill">สื่อการเรียนรู้รายวิชาสุขศึกษา ชั้นมัธยมศึกษาปีที่ 1</span>
+      <h1 class="game-title">ทางแยกหลังตึก</h1>
+      <p class="game-subtitle">
+        เกมจำลองสถานการณ์การตัดสินใจและทักษะการปฏิเสธบุหรี่ไฟฟ้า<br />
+        ทุกคำพูดของคุณ... กำหนดสิ่งที่จะเกิดขึ้นในวันพรุ่งนี้
+      </p>
+
+      <div class="section-label">1. เลือกตัวละครของคุณ:</div>
+      <div class="gender-grid">
+        <button type="button" id="btn-gender-male" class="gender-btn selected">
+          <span class="gender-emoji">👦</span>
+          <span class="gender-title">นักเรียนชาย (นนท์)</span>
+          <span class="gender-desc">สายกีฬา ชอบเตะฟุตบอล</span>
+        </button>
+
+        <button type="button" id="btn-gender-female" class="gender-btn">
+          <span class="gender-emoji">👧</span>
+          <span class="gender-title">นักเรียนหญิง (เนย)</span>
+          <span class="gender-desc">สายกิจกรรม ซ้อมวอลเลย์บอล</span>
+        </button>
+      </div>
+
+      <div class="name-input-group">
+        <div class="section-label">2. ชื่อเล่นของคุณในเกม (เปลี่ยนได้):</div>
+        <input
+          type="text"
+          id="player-name-input"
+          class="name-input"
+          maxlength="16"
+          value="นนท์"
+          placeholder="พิมพ์ชื่อเล่นของคุณ..."
+        />
+      </div>
+
+      <button type="button" id="btn-start-game" class="primary-start-btn">
+        ▶ เริ่มเข้าสู่สถานการณ์
+      </button>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       2. หน้าจอเล่นเกมสไตล์ 2D Visual Novel (GAME STAGE)
+       ======================================================================== -->
+  <section id="game-screen" class="screen">
+    <div id="vn-stage">
+
+      <!-- แถบเมนูด้านบน -->
+      <div class="top-hud">
+        <div id="asset-hint-badge" class="asset-badge">📁 ฉาก: BG-01</div>
+        <div class="hud-actions">
+          <button type="button" id="btn-mute" class="hud-btn">🔊 เปิดเสียง</button>
+          <button type="button" id="btn-restart-top" class="hud-btn">🏠 หน้าแรก</button>
+        </div>
+      </div>
+
+      <!-- ชั้นฉากหลัง -->
+      <div id="bg-layer"></div>
+
+      <!-- ชั้นสไปรต์ตัวละคร 2D -->
+      <div id="sprite-layer"></div>
+
+      <!-- ชั้นภาพเหตุการณ์พิเศษ (CG Cutscene) -->
+      <div id="cg-layer"></div>
+
+      <!-- หน้าต่างปุ่มตัวเลือก 4 ทางเลือก -->
+      <div id="choices-overlay">
+        <div class="choices-container">
+          <div class="choices-prompt-banner">⚡ ถึงเวลาตัดสินใจ: คุณจะพูดกับเพื่อนว่าอย่างไร?</div>
+          <div id="choices-list"></div>
+        </div>
+      </div>
+
+      <!-- กล่องบทสนทนาด้านล่าง (Dialogue Box) -->
+      <div class="dialogue-wrapper">
+        <div id="dialogue-box">
+          <div class="speaker-header">
+            <span id="speaker-badge">บาส</span>
+            <span id="speaker-role">เพื่อนขาโจ๋</span>
+          </div>
+
+          <div id="player-avatar-box" style="display: none;"></div>
+
+          <div class="dialogue-content">
+            <p id="dialogue-text"></p>
+          </div>
+
+          <div id="next-indicator">แตะเพื่อไปต่อ ▶</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       3. หน้าจอสรุปฉากจบและถอดบทเรียนสุขศึกษา (ENDING & DEBRIEFING MODAL)
+       ======================================================================== -->
+  <div id="ending-modal">
+    <div class="ending-card">
+      <span id="end-badge" class="ending-badge badge-good">MISSION COMPLETE</span>
+      <span id="end-random-slot" style="display: none;"></span>
+      <h2 id="end-title">ความจริงหน้าเสาธง</h2>
+
+      <div id="end-cg-preview"></div>
+
+      <p id="end-summary"></p>
+
+      <div class="lesson-box">
+        <h4>💡 บทเรียนสำคัญจากสถานการณ์นี้ (Key Takeaways):</h4>
+        <ul id="end-lessons"></ul>
+      </div>
+
+      <p id="end-progress-text" class="ending-progress"></p>
+
+      <div class="ending-actions">
+        <button type="button" id="btn-replay-choice" class="btn-replay">
+          🔄 ลองย้อนกลับไปเลือกทางอื่น
+        </button>
+        <button type="button" id="btn-restart-full" class="btn-restart">
+          🏠 กลับหน้าเลือกตัวละคร
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- โหลดไฟล์สคริปต์ตามลำดับ (เปิดไฟล์ index.html ได้โดยตรงไม่ต้องรันเซิร์ฟเวอร์) -->
+  <script src="js/config.js"></script>
+  <script src="js/story.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/engine.js"></script>
+</body>
+</html>
