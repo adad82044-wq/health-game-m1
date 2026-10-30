@@ -114,11 +114,11 @@ window.STORY_DATA = {
   refuse_family: [
     {
       bg: "BG_01",
-      sprites: ["SPRITE_FRIENDS", "SPRITE_BAS"],
-      activeSprite: "SPRITE_BAS",
+      cg: "CG_BAS_OFFER",
+      sprites: [],
+      activeSprite: "",
       speaker: "บาส",
       mood: "shrug",
-      voice: "assets/voices/07_bas_reply_family.mp3",
       text: "เออๆ รีบไปเหอะไอ้ลูกคุณหนู เดี๋ยวแม่แกมารอแล้วพวกกูซวยไปด้วย!"
     },
     {
@@ -129,11 +129,11 @@ window.STORY_DATA = {
   refuse_sport: [
     {
       bg: "BG_01",
-      sprites: ["SPRITE_FRIENDS", "SPRITE_BAS"],
-      activeSprite: "SPRITE_BAS",
+      cg: "CG_BAS_OFFER",
+      sprites: [],
+      activeSprite: "",
       speaker: "บาส",
       mood: "shrug",
-      voice: "assets/voices/08_bas_reply_sport.mp3",
       text: "เออว่ะ ลืมไปว่ามึงมีซ้อม ไปฟิตให้รอดนะเว้ย ถ้าแข่งแพ้พวกกูตามไปล้อแน่!"
     },
     {
@@ -144,11 +144,11 @@ window.STORY_DATA = {
   refuse_redirect: [
     {
       bg: "BG_01",
-      sprites: ["SPRITE_FRIENDS", "SPRITE_BAS"],
-      activeSprite: "SPRITE_BAS",
+      cg: "CG_BAS_OFFER",
+      sprites: [],
+      activeSprite: "",
       speaker: "บาส",
       mood: "shrug",
-      voice: "assets/voices/09_bas_reply_redirect.mp3",
       text: "เออ งั้นฝากซื้อชาเขียวขวดนึง เดี๋ยวพวกกูรีบตามออกไป"
     },
     {
