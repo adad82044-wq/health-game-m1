@@ -43,6 +43,8 @@ window.VNEngine = {
 
     // Stage Elements
     this.stageContainer = document.getElementById("vn-stage");
+    this.ambientBgLayer = document.getElementById("ambient-bg-layer");
+    this.sceneViewport = document.getElementById("scene-viewport");
     this.bgLayer = document.getElementById("bg-layer");
     this.cgLayer = document.getElementById("cg-layer");
     this.spriteLayer = document.getElementById("sprite-layer");
@@ -111,10 +113,16 @@ window.VNEngine = {
       this.startGame();
     });
 
-    // คลิกที่กล่องข้อความเพื่อไปต่อ หรือแสดงข้อความทันที
+    // คลิกที่กล่องข้อความหรือกรอบภาพฉากเพื่อไปต่อ หรือแสดงข้อความทันที
     this.dialogueBox.addEventListener("click", () => {
       this.handleDialogueAdvance();
     });
+
+    if (this.sceneViewport) {
+      this.sceneViewport.addEventListener("click", () => {
+        this.handleDialogueAdvance();
+      });
+    }
 
     // รองรับปุ่ม Spacebar / Enter บนคีย์บอร์ด
     window.addEventListener("keydown", (e) => {
@@ -476,7 +484,11 @@ window.VNEngine = {
     if (!bgConf) return;
 
     const fallbackSVG = this.getSVGBackground(bgConf.theme, bgConf.label);
-    this.bgLayer.style.backgroundImage = `url('${bgConf.path}'), url("${fallbackSVG}")`;
+    const bgStyle = `url('${bgConf.path}'), url("${fallbackSVG}")`;
+    this.bgLayer.style.backgroundImage = bgStyle;
+    if (this.ambientBgLayer) {
+      this.ambientBgLayer.style.backgroundImage = bgStyle;
+    }
 
     if (GAME_CONFIG.showAssetDebugHint) {
       this.assetHintBadge.textContent = `📁 ฉาก: ${bgConf.path}`;
@@ -491,12 +503,17 @@ window.VNEngine = {
     if (!cgConf) return;
 
     const fallbackSVG = this.getSVGCG(cgConf.theme, cgConf.label);
+    const cgStyle = `url("${cgConf.path}"), url("${fallbackSVG}")`;
     this.cgLayer.innerHTML = "";
     const frame = document.createElement("div");
     frame.className = "cg-frame";
-    frame.style.backgroundImage = `url("${cgConf.path}"), url("${fallbackSVG}")`;
+    frame.style.backgroundImage = cgStyle;
     this.cgLayer.appendChild(frame);
     this.cgLayer.classList.add("active");
+
+    if (this.ambientBgLayer) {
+      this.ambientBgLayer.style.backgroundImage = cgStyle;
+    }
 
     if (GAME_CONFIG.showAssetDebugHint) {
       this.assetHintBadge.textContent = `📁 ภาพ CG: ${cgConf.path}`;
@@ -566,6 +583,7 @@ window.VNEngine = {
     this.dialogueText.textContent = "";
     this.nextIndicator.classList.remove("visible");
     this.choicesOverlay.classList.remove("visible");
+    this.stageContainer.classList.remove("choices-mode");
 
     let charIdx = 0;
     const speed = GAME_CONFIG.typingSpeed || 28;
@@ -646,6 +664,7 @@ window.VNEngine = {
         e.stopPropagation();
         SoundManager.playClick();
         this.choicesOverlay.classList.remove("visible");
+        this.stageContainer.classList.remove("choices-mode");
         this.loadBranch(ch.nextBranch, 0);
       });
 
@@ -653,6 +672,7 @@ window.VNEngine = {
     });
 
     this.choicesOverlay.classList.add("visible");
+    this.stageContainer.classList.add("choices-mode");
   },
 
   showEndingScreen(endingData) {
