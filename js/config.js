@@ -47,95 +47,95 @@ window.GAME_CONFIG = {
   },
 
   // ==========================================================================
-  // พาธรูปภาพทั้งหมด (ตรงกับไฟล์ภาพสไตล์ 2D Anime/Webtoon Event CG)
+  // พาธรูปภาพทั้งหมด (ตรงกับไฟล์ในโฟลเดอร์ assets/scenes และ assets/avatars)
   // ==========================================================================
   assets: {
     backgrounds: {
       BG_01: {
-        path: "assets/backgrounds/bg-01.png?v=5",
-        label: "BG-01: มุมอับหลังอาคาร 3",
+        path: "assets/scenes/08_bg_empty_alley.png?v=6",
+        label: "08: ซอกตึกหลังอาคาร 3 (ฉากเปล่า)",
         theme: "alley"
       },
       BG_MINT_ARM: {
-        path: "assets/backgrounds/bg-mint-arm.png?v=5",
-        label: "BG: มินต์และอาร์มในซอกตึก",
+        path: "assets/scenes/01_scene_mint_arm.png?v=6",
+        label: "01: มินต์และอาร์มในซอกตึก",
         theme: "alley"
       },
       BG_BAS_OFFER: {
-        path: "assets/backgrounds/bg-bas-offer.png?v=5",
-        label: "BG: บาสยื่นพอตในซอกตึก",
+        path: "assets/scenes/02_scene_bas_offer.png?v=6",
+        label: "02: บาสยื่นพอตในซอกตึก",
         theme: "alley"
       },
       BG_02: {
-        path: "assets/backgrounds/bg-02.png?v=5",
-        label: "BG-02: ลานหน้าเสาธงตอนเช้า",
+        path: "assets/scenes/03_scene_assembly_flagpole.png?v=6",
+        label: "03: ลานหน้าเสาธงตอนเช้า",
         theme: "morning"
       },
       BG_TEACHER_PODIUM: {
-        path: "assets/backgrounds/bg-teacher-podium.png?v=5",
-        label: "BG: ครูอำนาจประกาศหน้าเสาธง",
+        path: "assets/scenes/04_scene_teacher_amnat.png?v=6",
+        label: "04: ครูอำนาจประกาศหน้าเสาธง",
         theme: "morning"
       },
       BG_03: {
-        path: "assets/backgrounds/bg-03.png?v=5",
-        label: "BG-03: ห้องฝ่ายปกครอง",
+        path: "assets/scenes/05_ending_bad_a_discipline.png?v=6",
+        label: "05: ห้องฝ่ายปกครอง & แม่ร้องไห้",
         theme: "office"
       }
     },
 
     sprites: {
       SPRITE_BAS: {
-        path: "assets/sprites/sprite-01-bas.png?v=5",
-        label: "SPRITE-01: บาส (ยื่นพอต)",
+        path: "assets/scenes/02_scene_bas_offer.png?v=6",
+        label: "02: บาส (ยื่นพอต)",
         character: "bas"
       },
       SPRITE_FRIENDS: {
-        path: "assets/sprites/sprite-02-friends.png?v=5",
-        label: "SPRITE-02: มินต์ & อาร์ม",
+        path: "assets/scenes/01_scene_mint_arm.png?v=6",
+        label: "01: มินต์ & อาร์ม",
         character: "friends"
       },
       SPRITE_TEACHER: {
-        path: "assets/sprites/sprite-03-teacher.png?v=5",
-        label: "SPRITE-03: ครูอำนาจ",
+        path: "assets/scenes/04_scene_teacher_amnat.png?v=6",
+        label: "04: ครูอำนาจ",
         character: "teacher"
       }
     },
 
     avatars: {
       AVATAR_M: {
-        path: "assets/avatars/avatar-m.png?v=5",
-        label: "AVATAR-M: นนท์ (ชาย)"
+        path: "assets/avatars/avatar_non_male.png?v=6",
+        label: "อวาตาร์ นนท์ (นักเรียนชาย)"
       },
       AVATAR_F: {
-        path: "assets/avatars/avatar-f.png?v=5",
-        label: "AVATAR-F: เนย (หญิง)"
+        path: "assets/avatars/avatar_noey_female.png?v=6",
+        label: "อวาตาร์ เนย (นักเรียนหญิง)"
       }
     },
 
     cgs: {
       CG_BAS_OFFER: {
-        path: "assets/cgs/cg-bas-offer.png?v=5",
-        label: "CG: บาสยื่นพอตหลังตึก",
+        path: "assets/scenes/02_scene_bas_offer.png?v=6",
+        label: "02: บาสยื่นพอตหลังตึก",
         theme: "bas_offer"
       },
       CG_GOOD: {
-        path: "assets/cgs/cg-good.png?v=5",
-        label: "CG-GOOD: รอดพ้นหน้าเสาธง",
+        path: "assets/scenes/03_scene_assembly_flagpole.png?v=6",
+        label: "03: รอดพ้นหน้าเสาธง",
         theme: "good"
       },
       CG_BAD_A: {
-        path: "assets/cgs/cg-bad-a.png?v=5",
-        label: "CG-BAD-A: ห้องปกครอง & แม่ร้องไห้",
+        path: "assets/scenes/05_ending_bad_a_discipline.png?v=6",
+        label: "05: ห้องปกครอง & แม่ร้องไห้",
         theme: "bad_family"
       },
       CG_BAD_B: {
-        path: "assets/cgs/cg-bad-b.png?v=5",
-        label: "CG-BAD-B: ทรุดข้างสนาม หายใจไม่ออก",
+        path: "assets/scenes/06_ending_bad_b_health.png?v=6",
+        label: "06: ทรุดข้างสนาม หายใจไม่ออก",
         theme: "bad_health"
       },
       CG_BAD_C: {
-        path: "assets/cgs/cg-bad-c.png?v=5",
-        label: "CG-BAD-C: กระเป๋าตังค์ฉีก & ถูกเมิน",
+        path: "assets/scenes/07_ending_bad_c_wallet.png?v=6",
+        label: "07: กระเป๋าตังค์ฉีก & ถูกเมิน",
         theme: "bad_money"
       }
     }
