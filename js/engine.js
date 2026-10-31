@@ -271,19 +271,31 @@ window.VNEngine = {
       this.studentReflectionInput.style.display = "none";
     }
 
+    // ปลดล็อกความสูงและเลื่อนขึ้นบนสุดชั่วคราวเพื่อให้แคปภาพได้ครบตั้งแต่หัวข้อฉากจบ รูปภาพ บทเรียน จนถึงคำตอบสะท้อนคิด
+    const prevCardScroll = this.endingCardCapture ? this.endingCardCapture.scrollTop : 0;
+    const prevModalScroll = this.endingModal ? this.endingModal.scrollTop : 0;
+
+    if (this.endingModal) {
+      this.endingModal.classList.add("capturing-full-card");
+      this.endingModal.scrollTop = 0;
+    }
+    if (this.endingCardCapture) {
+      this.endingCardCapture.classList.add("capturing-full-card");
+      this.endingCardCapture.scrollTop = 0;
+    }
+    window.scrollTo(0, 0);
+
     const filename = `ผลการเรียนรู้สุขศึกษา_${this.state.playerName || "นักเรียน"}_${this.state.currentEndingCode || "ENDING"}.png`;
 
-    html2canvas(this.endingCardCapture, {
-      scale: 2,
-      useCORS: true,
-      allowTaint: true,
-      backgroundColor: "#0f172a",
-      logging: false,
-      ignoreElements: (element) => {
-        return element.classList.contains("no-capture");
+    const restoreAfterCapture = () => {
+      if (this.endingModal) {
+        this.endingModal.classList.remove("capturing-full-card");
+        this.endingModal.scrollTop = prevModalScroll;
       }
-    }).then((canvas) => {
-      // คืนค่าการแสดงผลเดิม
+      if (this.endingCardCapture) {
+        this.endingCardCapture.classList.remove("capturing-full-card");
+        this.endingCardCapture.scrollTop = prevCardScroll;
+      }
       if (this.reflectionPrintView) {
         this.reflectionPrintView.style.display = "none";
       }
@@ -293,40 +305,80 @@ window.VNEngine = {
       if (this.saveStatusMsg) {
         this.saveStatusMsg.classList.remove("visible");
       }
+    };
 
-      const imgData = canvas.toDataURL("image/png");
+    requestAnimationFrame(() => {
+      const fullWidth = this.endingCardCapture.offsetWidth;
+      const fullHeight = this.endingCardCapture.scrollHeight;
 
-      // ใส่รูปลงใน Modal พรีวิว
-      if (this.generatedCardPreview) {
-        this.generatedCardPreview.src = imgData;
-      }
-      if (this.btnDirectDownload) {
-        this.btnDirectDownload.href = imgData;
-        this.btnDirectDownload.download = filename;
-      }
+      html2canvas(this.endingCardCapture, {
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: "#0f172a",
+        width: fullWidth,
+        height: fullHeight,
+        windowWidth: Math.max(document.documentElement.clientWidth, fullWidth + 32),
+        windowHeight: fullHeight + 200,
+        scrollX: 0,
+        scrollY: 0,
+        x: 0,
+        y: 0,
+        logging: false,
+        ignoreElements: (element) => {
+          return element.classList.contains("no-capture");
+        },
+        onclone: (clonedDoc) => {
+          const clonedModal = clonedDoc.getElementById("ending-modal");
+          const clonedCard = clonedDoc.getElementById("ending-card-capture");
+          if (clonedModal) {
+            clonedModal.style.position = "static";
+            clonedModal.style.overflow = "visible";
+            clonedModal.style.height = "auto";
+            clonedModal.style.maxHeight = "none";
+          }
+          if (clonedCard) {
+            clonedCard.style.maxHeight = "none";
+            clonedCard.style.height = "auto";
+            clonedCard.style.overflow = "visible";
+            clonedCard.scrollTop = 0;
+          }
+        }
+      }).then((canvas) => {
+        restoreAfterCapture();
 
-      // พยายามดาวน์โหลดอัตโนมัติลงเครื่อง
-      try {
-        const link = document.createElement("a");
-        link.download = filename;
-        link.href = imgData;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      } catch (e) {
-        // Fallback to preview modal
-      }
+        const imgData = canvas.toDataURL("image/png");
 
-      // แสดง Modal แจ้งเตือนเพื่อให้ผู้ใช้มือถือสามารถแตะค้างเซฟรูปได้แน่นอน 100%
-      if (this.imagePreviewModal) {
-        this.imagePreviewModal.classList.add("visible");
-      }
-    }).catch((err) => {
-      console.error("Capture error:", err);
-      if (this.reflectionPrintView) this.reflectionPrintView.style.display = "none";
-      if (this.studentReflectionInput) this.studentReflectionInput.style.display = "block";
-      if (this.saveStatusMsg) this.saveStatusMsg.classList.remove("visible");
-      alert("เกิดข้อผิดพลาดในการสร้างภาพ กรุณาลองใหม่อีกครั้งครับ");
+        // ใส่รูปลงใน Modal พรีวิว
+        if (this.generatedCardPreview) {
+          this.generatedCardPreview.src = imgData;
+        }
+        if (this.btnDirectDownload) {
+          this.btnDirectDownload.href = imgData;
+          this.btnDirectDownload.download = filename;
+        }
+
+        // พยายามดาวน์โหลดอัตโนมัติลงเครื่อง
+        try {
+          const link = document.createElement("a");
+          link.download = filename;
+          link.href = imgData;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        } catch (e) {
+          // Fallback to preview modal
+        }
+
+        // แสดง Modal แจ้งเตือนเพื่อให้ผู้ใช้มือถือสามารถแตะค้างเซฟรูปได้แน่นอน 100%
+        if (this.imagePreviewModal) {
+          this.imagePreviewModal.classList.add("visible");
+        }
+      }).catch((err) => {
+        console.error("Capture error:", err);
+        restoreAfterCapture();
+        alert("เกิดข้อผิดพลาดในการสร้างภาพ กรุณาลองใหม่อีกครั้งครับ");
+      });
     });
   },
 
@@ -645,7 +697,7 @@ window.VNEngine = {
     this.choicesList.innerHTML = "";
     choices.forEach((ch, idx) => {
       const btn = document.createElement("button");
-      btn.className = `choice-btn ${ch.isDanger ? "choice-danger" : "choice-strategic"}`;
+      btn.className = "choice-btn";
 
       const choiceText =
         this.state.gender === "female" && ch.textFemale
@@ -655,7 +707,6 @@ window.VNEngine = {
       btn.innerHTML = `
         <div class="choice-header">
           <span class="choice-num">ทางเลือกที่ ${idx + 1}</span>
-          <span class="choice-tag">${ch.tag}</span>
         </div>
         <div class="choice-body">${this.formatText(choiceText)}</div>
       `;

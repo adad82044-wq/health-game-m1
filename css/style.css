@@ -645,6 +645,18 @@ html, body {
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
 }
 
+/* โหมดปลดล็อกความสูงชั่วคราวขณะแคปภาพใบงานทั้งหมดตั้งแต่หัวข้อด้านบนสุดจนถึงท้ายสุด */
+#ending-modal.capturing-full-card {
+  align-items: flex-start !important;
+  overflow: visible !important;
+}
+
+.ending-card.capturing-full-card {
+  max-height: none !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
 .card-student-header {
   display: flex;
   justify-content: space-between;
@@ -708,7 +720,6 @@ html, body {
 
 #end-cg-preview {
   width: 100%;
-  aspect-ratio: 16 / 9;
   height: auto;
   border-radius: 14px;
   overflow: hidden;
@@ -718,15 +729,12 @@ html, body {
   border: 1px solid rgba(255, 255, 255, 0.2);
   margin-bottom: 14px;
   background-color: #020617;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
 }
 
 #end-cg-preview img {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  height: auto;
   display: block;
 }
 
