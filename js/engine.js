@@ -344,9 +344,11 @@ window.VNEngine = {
     if (!cgConf) return;
 
     const fallbackSVG = this.getSVGCG(cgConf.theme, cgConf.label);
-    this.cgLayer.innerHTML = `
-      <div class="cg-frame" style="background-image: url('${cgConf.path}'), url('${fallbackSVG}')"></div>
-    `;
+    this.cgLayer.innerHTML = "";
+    const frame = document.createElement("div");
+    frame.className = "cg-frame";
+    frame.style.backgroundImage = `url("${cgConf.path}"), url("${fallbackSVG}")`;
+    this.cgLayer.appendChild(frame);
     this.cgLayer.classList.add("active");
 
     if (GAME_CONFIG.showAssetDebugHint) {
@@ -534,7 +536,7 @@ window.VNEngine = {
     const cgConf = GAME_CONFIG.assets.cgs[endingData.cg];
     if (cgConf) {
       const fallbackSVG = this.getSVGCG(cgConf.theme, cgConf.label);
-      this.endCgPreview.style.backgroundImage = `url('${cgConf.path}'), url('${fallbackSVG}')`;
+      this.endCgPreview.style.backgroundImage = `url("${cgConf.path}"), url("${fallbackSVG}")`;
     }
 
     // รายการบทเรียนสุขศึกษา
@@ -613,7 +615,7 @@ window.VNEngine = {
         <text x='640' y='200' fill='#94a3b8' font-size='32' text-anchor='middle' font-family='sans-serif'>ห้องฝ่ายปกครอง</text>
       </svg>`;
     }
-    return "data:image/svg+xml;utf8," + encodeURIComponent(svg);
+    return "data:image/svg+xml;utf8," + encodeURIComponent(svg).replace(/'/g, "%27");
   },
 
   getSVGSprite(charType, label) {
@@ -679,7 +681,7 @@ window.VNEngine = {
         <text x='210' y='534' fill='#ffffff' font-size='18' font-family='sans-serif' font-weight='bold' text-anchor='middle'>ครูอำนาจ (ฝ่ายปกครอง)</text>
       </svg>`;
     }
-    return "data:image/svg+xml;utf8," + encodeURIComponent(svg);
+    return "data:image/svg+xml;utf8," + encodeURIComponent(svg).replace(/'/g, "%27");
   },
 
   getSVGAvatar(gender) {
@@ -691,7 +693,7 @@ window.VNEngine = {
       <path d='M28,50 Q60,15 92,50 Z' fill='${hair}'/>
       <path d='M25,115 Q60,82 95,115 Z' fill='#f8fafc'/>
     </svg>`;
-    return "data:image/svg+xml;utf8," + encodeURIComponent(svg);
+    return "data:image/svg+xml;utf8," + encodeURIComponent(svg).replace(/'/g, "%27");
   },
 
   getSVGCG(theme, label) {
@@ -714,7 +716,7 @@ window.VNEngine = {
       <text x='640' y='340' fill='#ffffff' font-size='44' font-family='sans-serif' font-weight='bold' text-anchor='middle'>${c[2]}</text>
       <text x='640' y='400' fill='#e2e8f0' font-size='24' font-family='sans-serif' text-anchor='middle'>(${label})</text>
     </svg>`;
-    return "data:image/svg+xml;utf8," + encodeURIComponent(svg);
+    return "data:image/svg+xml;utf8," + encodeURIComponent(svg).replace(/'/g, "%27");
   }
 };
 

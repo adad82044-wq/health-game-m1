@@ -52,50 +52,60 @@ window.GAME_CONFIG = {
   assets: {
     backgrounds: {
       BG_01: {
-        path: "assets/scenes/08_bg_empty_alley.png?v=6",
+        path: "assets/scenes/08_bg_empty_alley.png?v=8",
         label: "08: ซอกตึกหลังอาคาร 3 (ฉากเปล่า)",
         theme: "alley"
       },
       BG_MINT_ARM: {
-        path: "assets/scenes/01_scene_mint_arm.png?v=6",
+        path: "assets/scenes/01_scene_mint_arm.png?v=8",
         label: "01: มินต์และอาร์มในซอกตึก",
         theme: "alley"
       },
       BG_BAS_OFFER: {
-        path: "assets/scenes/02_scene_bas_offer.png?v=6",
+        path: "assets/scenes/02_scene_bas_offer.png?v=8",
         label: "02: บาสยื่นพอตในซอกตึก",
         theme: "alley"
       },
       BG_02: {
-        path: "assets/scenes/03_scene_assembly_flagpole.png?v=6",
+        path: "assets/scenes/03_scene_assembly_flagpole.png?v=8",
         label: "03: ลานหน้าเสาธงตอนเช้า",
         theme: "morning"
       },
       BG_TEACHER_PODIUM: {
-        path: "assets/scenes/04_scene_teacher_amnat.png?v=6",
+        path: "assets/scenes/04_scene_teacher_amnat.png?v=8",
         label: "04: ครูอำนาจประกาศหน้าเสาธง",
         theme: "morning"
       },
       BG_03: {
-        path: "assets/scenes/05_ending_bad_a_discipline.png?v=6",
+        path: "assets/scenes/05_ending_bad_a_discipline.png?v=8",
         label: "05: ห้องฝ่ายปกครอง & แม่ร้องไห้",
         theme: "office"
+      },
+      BG_BAD_B: {
+        path: "assets/scenes/06_ending_bad_b_health.png?v=8",
+        label: "06: ทรุดคาสนามฟุตบอล หายใจไม่ออก",
+        theme: "alley"
+      },
+      BG_BAD_C: {
+        path: "assets/scenes/07_ending_bad_c_wallet.png?v=8",
+        label: "07: กระเป๋าตังค์ฉีก & เพื่อนทิ้ง",
+        theme: "alley"
       }
     },
 
     sprites: {
       SPRITE_BAS: {
-        path: "assets/scenes/02_scene_bas_offer.png?v=6",
+        path: "assets/scenes/02_scene_bas_offer.png?v=8",
         label: "02: บาส (ยื่นพอต)",
         character: "bas"
       },
       SPRITE_FRIENDS: {
-        path: "assets/scenes/01_scene_mint_arm.png?v=6",
+        path: "assets/scenes/01_scene_mint_arm.png?v=8",
         label: "01: มินต์ & อาร์ม",
         character: "friends"
       },
       SPRITE_TEACHER: {
-        path: "assets/scenes/04_scene_teacher_amnat.png?v=6",
+        path: "assets/scenes/04_scene_teacher_amnat.png?v=8",
         label: "04: ครูอำนาจ",
         character: "teacher"
       }
@@ -103,38 +113,38 @@ window.GAME_CONFIG = {
 
     avatars: {
       AVATAR_M: {
-        path: "assets/avatars/avatar_non_male.png?v=6",
+        path: "assets/avatars/avatar_non_male.png?v=8",
         label: "อวาตาร์ นนท์ (นักเรียนชาย)"
       },
       AVATAR_F: {
-        path: "assets/avatars/avatar_noey_female.png?v=6",
+        path: "assets/avatars/avatar_noey_female.png?v=8",
         label: "อวาตาร์ เนย (นักเรียนหญิง)"
       }
     },
 
     cgs: {
       CG_BAS_OFFER: {
-        path: "assets/scenes/02_scene_bas_offer.png?v=6",
+        path: "assets/scenes/02_scene_bas_offer.png?v=8",
         label: "02: บาสยื่นพอตหลังตึก",
         theme: "bas_offer"
       },
       CG_GOOD: {
-        path: "assets/scenes/03_scene_assembly_flagpole.png?v=6",
+        path: "assets/scenes/03_scene_assembly_flagpole.png?v=8",
         label: "03: รอดพ้นหน้าเสาธง",
         theme: "good"
       },
       CG_BAD_A: {
-        path: "assets/scenes/05_ending_bad_a_discipline.png?v=6",
+        path: "assets/scenes/05_ending_bad_a_discipline.png?v=8",
         label: "05: ห้องปกครอง & แม่ร้องไห้",
         theme: "bad_family"
       },
       CG_BAD_B: {
-        path: "assets/scenes/06_ending_bad_b_health.png?v=6",
+        path: "assets/scenes/06_ending_bad_b_health.png?v=8",
         label: "06: ทรุดข้างสนาม หายใจไม่ออก",
         theme: "bad_health"
       },
       CG_BAD_C: {
-        path: "assets/scenes/07_ending_bad_c_wallet.png?v=6",
+        path: "assets/scenes/07_ending_bad_c_wallet.png?v=8",
         label: "07: กระเป๋าตังค์ฉีก & ถูกเมิน",
         theme: "bad_money"
       }
