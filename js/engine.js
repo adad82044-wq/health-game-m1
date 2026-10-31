@@ -72,6 +72,11 @@ window.VNEngine = {
     this.endProgressText = document.getElementById("end-progress-text");
     this.btnReplayChoice = document.getElementById("btn-replay-choice");
     this.btnRestartFull = document.getElementById("btn-restart-full");
+
+    // Reflection Box Elements
+    this.studentReflectionInput = document.getElementById("student-reflection-input");
+    this.btnCopyReflection = document.getElementById("btn-copy-reflection");
+    this.copyFeedback = document.getElementById("copy-feedback");
   },
 
   bindEvents() {
@@ -131,6 +136,62 @@ window.VNEngine = {
       this.endingModal.classList.remove("visible");
       this.returnToTitle();
     });
+
+    // ปุ่มคัดลอกคำตอบสะท้อนคิดท้ายเกม
+    if (this.btnCopyReflection) {
+      this.btnCopyReflection.addEventListener("click", () => {
+        SoundManager.playClick();
+        const text = (this.studentReflectionInput.value || "").trim();
+        if (!text) {
+          alert("กรุณาพิมพ์คำตอบของคุณก่อนกดคัดลอกครับ");
+          return;
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(() => {
+            this.showCopyFeedback();
+          }).catch(() => {
+            this.fallbackCopyText();
+          });
+        } else {
+          this.fallbackCopyText();
+        }
+      });
+    }
+
+    // บันทึกคำตอบลง localStorage อัตโนมัติขณะพิมพ์
+    if (this.studentReflectionInput) {
+      this.studentReflectionInput.addEventListener("input", () => {
+        if (this.state.currentEndingCode) {
+          try {
+            localStorage.setItem(
+              `health_game_reflection_${this.state.currentEndingCode}`,
+              this.studentReflectionInput.value
+            );
+          } catch (e) {
+            // Ignore localStorage errors
+          }
+        }
+      });
+    }
+  },
+
+  showCopyFeedback() {
+    if (!this.copyFeedback) return;
+    this.copyFeedback.classList.add("visible");
+    setTimeout(() => {
+      this.copyFeedback.classList.remove("visible");
+    }, 2500);
+  },
+
+  fallbackCopyText() {
+    if (!this.studentReflectionInput) return;
+    this.studentReflectionInput.select();
+    try {
+      document.execCommand("copy");
+      this.showCopyFeedback();
+    } catch (err) {
+      alert("ไม่สามารถคัดลอกได้อัตโนมัติ กรุณากดเลือกข้อความแล้วคัดลอกด้วยตนเองครับ");
+    }
   },
 
   selectGender(gender) {
@@ -188,6 +249,17 @@ window.VNEngine = {
     }
   },
 
+  getStepText(step) {
+    if (!step) return "";
+    if (this.state.gender === "female" && step.textFemale) {
+      return step.textFemale;
+    }
+    if (this.state.gender === "male" && step.textMale) {
+      return step.textMale;
+    }
+    return step.text || "";
+  },
+
   formatText(rawText) {
     if (!rawText) return "";
     return rawText.replace(/\{name\}/g, this.state.playerName);
@@ -197,8 +269,10 @@ window.VNEngine = {
     const step = this.state.currentBranch[this.state.stepIndex];
     if (!step) return;
 
+    const stepText = this.getStepText(step);
+
     // กรณีเป็นตัวเชื่อมไปกิ่งอื่นทันที
-    if (step.nextBranch && !step.text && !step.ending) {
+    if (step.nextBranch && !stepText && !step.ending) {
       this.loadBranch(step.nextBranch, 0);
       return;
     }
@@ -241,7 +315,7 @@ window.VNEngine = {
     this.renderSpeaker(step.speaker, step.isThought);
 
     // 5. พิมพ์ข้อความทีละตัวอักษร
-    const formatted = this.formatText(step.text);
+    const formatted = this.formatText(stepText);
     this.startTyping(formatted, () => {
       // เมื่อพิมพ์จบ ถ้ามีตัวเลือก ให้แสดงหน้าต่างตัวเลือก
       if (Array.isArray(step.choices)) {
@@ -433,6 +507,7 @@ window.VNEngine = {
   },
 
   showEndingScreen(endingData) {
+    this.state.currentEndingCode = endingData.code;
     this.state.seenEndings.add(endingData.code);
     if (endingData.type === "GOOD") {
       SoundManager.playSFX("chime");
@@ -471,6 +546,19 @@ window.VNEngine = {
     });
 
     this.endProgressText.textContent = `ปลดล็อกฉากจบแล้ว ${this.state.seenEndings.size} / 4 รูปแบบ (ฉากจบดี 1 แบบ + ฉากจบสุ่มเมื่อลองสูบ 3 แบบ)`;
+
+    // โหลดคำตอบสะท้อนคิดเดิมที่เคยบันทึกไว้ (ถ้ามี)
+    if (this.studentReflectionInput) {
+      try {
+        const saved = localStorage.getItem(`health_game_reflection_${endingData.code}`) || "";
+        this.studentReflectionInput.value = saved;
+      } catch (e) {
+        this.studentReflectionInput.value = "";
+      }
+    }
+    if (this.copyFeedback) {
+      this.copyFeedback.classList.remove("visible");
+    }
 
     this.endingModal.classList.add("visible");
   },

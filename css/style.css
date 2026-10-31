@@ -146,6 +146,30 @@ html, body {
   font-size: 2.1rem;
 }
 
+.gender-avatar-wrap {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+  background: #1e293b;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: all 0.25s ease;
+}
+
+.gender-btn.selected .gender-avatar-wrap {
+  border-color: #60a5fa;
+  box-shadow: 0 0 16px rgba(96, 165, 250, 0.6);
+  transform: scale(1.06);
+}
+
+.gender-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .gender-title {
   font-size: 1rem;
   font-weight: 600;
@@ -681,6 +705,90 @@ html, body {
   font-size: 0.82rem;
   color: #94a3b8;
   margin-bottom: 14px;
+}
+
+/* กล่องสะท้อนคิดสำหรับนักเรียน (Reflection Box) */
+.reflection-box {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+}
+
+.reflection-label {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #38bdf8;
+  line-height: 1.45;
+}
+
+.reflection-textarea {
+  width: 100%;
+  background: rgba(30, 41, 59, 0.9);
+  border: 1.5px solid rgba(148, 163, 184, 0.35);
+  border-radius: 10px;
+  color: #f8fafc;
+  font-family: 'Sarabun', sans-serif;
+  font-size: 0.95rem;
+  padding: 10px 12px;
+  resize: vertical;
+  min-height: 70px;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.reflection-textarea:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
+}
+
+.reflection-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-copy-reflection {
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-family: 'Prompt', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-copy-reflection:hover {
+  background: linear-gradient(135deg, #0369a1, #075985);
+  transform: translateY(-1px);
+}
+
+.copy-feedback {
+  font-size: 0.85rem;
+  color: #4ade80;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: all 0.25s ease;
+  pointer-events: none;
+}
+
+.copy-feedback.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .ending-actions {

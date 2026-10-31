@@ -18,7 +18,7 @@ window.STORY_DATA = {
   opening: [
     {
       id: "open_1",
-      bg: "BG_MINT_ARM",
+      bg: "BG_01",
       sprites: [],
       activeSprite: "",
       speaker: "บรรยาย",
@@ -28,7 +28,7 @@ window.STORY_DATA = {
     },
     {
       id: "open_2",
-      bg: "BG_MINT_ARM",
+      bg: "BG_01",
       sprites: [],
       activeSprite: "",
       speaker: "player",
@@ -66,7 +66,7 @@ window.STORY_DATA = {
       speaker: "บาส",
       mood: "challenge",
       sfx: "heartbeat",
-      text: "เห้ย {name}... ลองดูเปล่า ดีนะเว้ย กลิ่นแตงโมอย่างหอมเลย ไม่แสบคอด้วย ของนำเข้าเลยนะมึง ลองดูสักทีจะได้คุยกับพวกกูรู้เรื่อง"
+      text: "เห้ย {name} ลองสักทีเปล่า กลิ่นแตงโม"
     },
     {
       id: "open_choice",
@@ -81,26 +81,26 @@ window.STORY_DATA = {
         {
           id: "choice_family",
           tag: "กลยุทธ์ที่ 1: อ้างครอบครัว",
-          text: "“ไม่ได้เลย วันนี้แม่มารับเร็ว เดี๋ยวโดนเช็กของในกระเป๋า”",
+          text: "“แม่มารับอะดิ เดี๋ยวได้กลิ่นเเล้วจะเกมส์เอา”",
           nextBranch: "refuse_family"
         },
         {
           id: "choice_sport",
-          tag: "กลยุทธ์ที่ 2: อ้างสุขภาพ/กิจกรรม",
-          textMale: "“ไม่ล่ะมึง เดี๋ยวมีคัดตัวนักบอลโรงเรียน หายใจไม่ทัน โค้ชด่าตาย”",
-          textFemale: "“ไม่ล่ะแก เดี๋ยวมีซ้อมหลีด/ซ้อมวอลเลย์ หายใจไม่ทัน โดนบ่นตาย”",
+          tag: "กลยุทธ์ที่ 2: อ้างสุขภาพ/คนคุย",
+          textMale: "“เดือนหน้ากูมีคัดตัวบอลโรงเรียนอะดิ กลัวปอดพังก่อนหวะ”",
+          textFemale: "“ไม่ดีกว่ามึง...พี่กายที่กูคุยอยู่เขาไม่ชอบอะดิ”",
           nextBranch: "refuse_sport"
         },
         {
           id: "choice_redirect",
           tag: "กลยุทธ์ที่ 3: เบี่ยงประเด็น/แยกตัว",
-          text: "“พวกมึงสูบไปเหอะ เดี๋ยวกูไปซื้อน้ำหน้าปากซอย มีใครเอาอะไรไหม”",
+          text: "“เอาเลยเพื่อนเดี๋ยวกูไปซื้อนํ้าหน้าโรงเรียนดีกว่า เอาไรเปล่า”",
           nextBranch: "refuse_redirect"
         },
         {
           id: "choice_accept",
           tag: "ยอมตามกระแสเพื่อน",
-          text: "“เออ... ลองหน่อยก็ได้วะ”",
+          text: "“ไหน...เอามาลองสักที”",
           isDanger: true,
           nextBranch: "RANDOM_BAD_ENDING"
         }
@@ -118,7 +118,7 @@ window.STORY_DATA = {
       activeSprite: "",
       speaker: "บาส",
       mood: "shrug",
-      text: "เออๆ รีบไปเหอะไอ้ลูกคุณหนู เดี๋ยวแม่แกมารอแล้วพวกกูซวยไปด้วย!"
+      text: "เออ เอาเหอะเดี๋ยวแม่มึงไปบอกครูปกครองอีกยิ่งดุๆอยู่"
     },
     {
       nextBranch: "good_escape"
@@ -132,7 +132,8 @@ window.STORY_DATA = {
       activeSprite: "",
       speaker: "บาส",
       mood: "shrug",
-      text: "เออว่ะ ลืมไปว่ามึงมีซ้อม ไปฟิตให้รอดนะเว้ย ถ้าแข่งแพ้พวกกูตามไปล้อแน่!"
+      textMale: "เคๆ ไม่ติดมาเดี๋ยวกูล้อยันลูกบวชอะ 5555",
+      textFemale: "อ่อพี่กาย ตัวนั้นนี่ไม่เอาเลยหนิ แถมเป็นมวยอีก เดี๋ยวมีเรื่องกูจะชิบหายเอา"
     },
     {
       nextBranch: "good_escape"
@@ -163,12 +164,13 @@ window.STORY_DATA = {
       speaker: "player",
       isThought: true,
       mood: "relief",
+      avatarMood: "relief",
       voiceMale: "assets/voices/10_player_escape1_m.mp3",
       voiceFemale: "assets/voices/10_player_escape1_f.mp3",
       text: "โอเคดีเเล้วที่ไม่โดนตื๊ออีก รีบไปดีกว่า!"
     },
     {
-      bg: "BG_02",
+      bg: "BG_01",
       sprites: [],
       speaker: "บรรยาย",
       mood: "calm",
@@ -177,10 +179,11 @@ window.STORY_DATA = {
       text: "{name} หันหลังเดินก้าวเร็วๆ ออกมาจากซอกตึก แสงแดดส่องกระทบหน้า ลมพัดเย็นสบาย ความอึดอัดเมื่อครู่ค่อยๆ หายไป"
     },
     {
-      bg: "BG_02",
+      bg: "BG_01",
       sprites: [],
       speaker: "player",
       mood: "relief",
+      avatarMood: "relief",
       voiceMale: "assets/voices/12_player_sigh_m.mp3",
       voiceFemale: "assets/voices/12_player_sigh_f.mp3",
       text: "เฮ้อ... นึกว่าจะโดนบังคับให้ลองซะแล้ว โชคดีที่พูดออกไปแบบนั้น"
@@ -221,7 +224,7 @@ window.STORY_DATA = {
       speaker: "ครูอำนาจ",
       mood: "stern",
       voice: "assets/voices/16_teacher_announce.mp3",
-      text: "นักเรียนทุกคนฟัง! เมื่อวานช่วงเย็น ครูเวรได้ลงพื้นที่ตรวจและจับกุมนักเรียนกลุ่มหนึ่งมั่วสุมเสพบุหรี่และบุหรี่ไฟฟ้าบริเวณหลังอาคาร 3... ขณะนี้ทางฝ่ายปกครองได้ยึดของกลาง และกำลังประสานผู้ปกครองของนักเรียนทุกคนในกลุ่มให้มาพบด่วน!"
+      text: "นักเรียนทุกคนฟัง! วันนี้ครูจะมาเตือน เมื่อวานช่วงเย็น ครูเวรเดินตรวจเเละได้เจอนักเรียนกลุ่มหนึ่งมั่วสุมเสพบุหรี่เเละบุหรี่ไฟฟ้าบริเวณหลังอาคาร 3 ตอนนี้ครูกำลังเรียกพบผู้ปกครองของนักเรียนกลุ่มนั้นเเล้ว หากพบนักเรียนคนใดทำผิดอีกทางโรงเรียนจะดำเนินการลงโทษขั้นสูงสุด"
     },
     {
       bg: "BG_02",
@@ -267,7 +270,7 @@ window.STORY_DATA = {
         text: "มันต้องยังงี้ดิวะเพื่อน มาๆ ดูดลึกๆ เลย!"
       },
       {
-        bg: "BG_01",
+        bg: "BG_TEACHER_PODIUM",
         sprites: [],
         activeSprite: "",
         speaker: "ครูอำนาจ",
@@ -284,7 +287,7 @@ window.STORY_DATA = {
         speaker: "บรรยาย",
         mood: "sad",
         voice: "assets/voices/20_bad_a_narrator.mp3",
-        text: "ที่ห้องฝ่ายปกครอง... บาส มินต์ อาร์ม และ {name} ยืนหน้าซีดตัวสั่น คุณแม่ของคุณต้องลางานกะทันหันมานั่งยกมือไหว้ขอโทษครูด้วยน้ำตา"
+        text: "ที่ห้องฝ่ายปกครอง... บาส มินต์ อาร์ม และ {name} หน้าซีดตัวสั่น คุณแม่ของคุณต้องลางานกะทันหันมานั่งยกมือไหว้ขอโทษครูด้วยน้ำตา"
       },
       {
         bg: "BG_03",
@@ -293,9 +296,10 @@ window.STORY_DATA = {
         speaker: "player",
         isThought: true,
         mood: "regret",
+        avatarMood: "stress",
         voiceMale: "assets/voices/21_bad_a_regret_m.mp3",
         voiceFemale: "assets/voices/21_bad_a_regret_f.mp3",
-        text: "แค่ยอมลองคำเดียวเพราะกลัวเพื่อนล้อ... แต่คนที่ต้องมาร้องไห้และอับอายที่สุดกลับเป็นแม่ของเราเอง..."
+        text: "ไม่น่าลองเลย โดนครูจับได้อีกขออย่าโดนไล่ออกเถอะนะ..."
       },
       {
         ending: {
@@ -327,15 +331,17 @@ window.STORY_DATA = {
       },
       {
         bg: "BG_01",
+        cg: "CG_BAD_B",
         sprites: [],
         activeSprite: "",
         speaker: "player",
         mood: "pain",
+        avatarMood: "stress",
         sfx: "cough",
         screenShake: true,
         voiceMale: "assets/voices/22_bad_b_cough_m.mp3",
         voiceFemale: "assets/voices/22_bad_b_cough_f.mp3",
-        text: "แค่ก!! แค่กๆๆ!! อ่อก... แสบคอ... หายใจไม่ออก..."
+        text: "เห้อ เห้อ เหนื่อยจังวะ เพราะสูบบุหรี่แน่เลย เวียนหัวชิบหาย"
       },
       {
         bg: "BG_01",
@@ -353,9 +359,10 @@ window.STORY_DATA = {
         speaker: "player",
         isThought: true,
         mood: "regret",
+        avatarMood: "stress",
         voiceMale: "assets/voices/24_bad_b_regret_m.mp3",
         voiceFemale: "assets/voices/24_bad_b_regret_f.mp3",
-        text: "ไหนบาสบอกว่ากลิ่นผลไม้ไม่แสบคอไง... แน่นหน้าอกไปหมด วิ่งได้ไม่ถึงสองนาทีก็หอบจนหมดสิทธิ์คัดตัวแล้ว..."
+        text: "ไหนบาสบอกว่าไม่เป็นไรวะ เหนื่อยจนจะเป็นลมเเล้วเนี่ย..."
       },
       {
         ending: {
@@ -386,13 +393,13 @@ window.STORY_DATA = {
         text: "มันต้องยังงี้ดิวะเพื่อน มาๆ ดูดลึกๆ เลย!"
       },
       {
-        bg: "BG_01",
+        bg: "BG_MINT_ARM",
         sprites: [],
         activeSprite: "",
         speaker: "บาส",
         mood: "greedy",
         voice: "assets/voices/25_bad_c_bas_money.mp3",
-        text: "เห็นปะล่ะว่าดี... อาทิตย์หน้าหัวพอตอันใหม่มา อันละ 300 มึงต้องหารกับพวกกูนะเว้ย ไม่งั้นไม่ให้เข้ากลุ่ม"
+        text: "เห็นปะละว่าดี... อาทิตย์หน้าหัวพอตอันใหม่มา อันละ 300 มึงต้องหารกับพวกกูนะเว้ย ไม่งั้นไม่ให้เข้ากลุ่ม"
       },
       {
         bg: "BG_01",
@@ -410,6 +417,7 @@ window.STORY_DATA = {
         speaker: "player",
         isThought: true,
         mood: "regret",
+        avatarMood: "stress",
         voiceMale: "assets/voices/27_bad_c_regret_m.mp3",
         voiceFemale: "assets/voices/27_bad_c_regret_f.mp3",
         text: "พอเราเริ่มไม่มีตังค์มาแชร์... บาสกับพวกก็เดินหนี ไม่ชวนคุยเหมือนเดิม สรุปที่ชวนเราวันนั้น ก็แค่หาคนช่วยออกตังค์แค่นั้นเองเหรอ..."

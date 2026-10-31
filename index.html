@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>ทางแยกหลังตึก | เกมจำลองสถานการณ์วิชาสุขศึกษา ม.1</title>
-  <link rel="stylesheet" href="css/style.css?v=20261031_5" />
+  <link rel="stylesheet" href="css/style.css?v=20261031_7" />
 </head>
 <body>
 
@@ -23,13 +23,17 @@
       <div class="section-label">1. เลือกตัวละครของคุณ:</div>
       <div class="gender-grid">
         <button type="button" id="btn-gender-male" class="gender-btn selected">
-          <span class="gender-emoji">👦</span>
+          <div class="gender-avatar-wrap">
+            <img src="assets/avatars/avatar_non_male.png?v=7" alt="นนท์" class="gender-avatar-img" />
+          </div>
           <span class="gender-title">นักเรียนชาย (นนท์)</span>
           <span class="gender-desc">สายกีฬา ชอบเตะฟุตบอล</span>
         </button>
 
         <button type="button" id="btn-gender-female" class="gender-btn">
-          <span class="gender-emoji">👧</span>
+          <div class="gender-avatar-wrap">
+            <img src="assets/avatars/avatar_noey_female.png?v=7" alt="เนย" class="gender-avatar-img" />
+          </div>
           <span class="gender-title">นักเรียนหญิง (เนย)</span>
           <span class="gender-desc">สายกิจกรรม ซ้อมวอลเลย์บอล</span>
         </button>
@@ -124,6 +128,25 @@
         <ul id="end-lessons"></ul>
       </div>
 
+      <!-- กล่องสะท้อนคิดสำหรับนักเรียน (Student Reflection & Formative Assessment) -->
+      <div class="reflection-box">
+        <label for="student-reflection-input" class="reflection-label">
+          ✍️ คำถามสะท้อนคิด: จบแบบนี้คิดว่าดีเเล้วหรือไม่ เพราะอะไร?
+        </label>
+        <textarea
+          id="student-reflection-input"
+          class="reflection-textarea"
+          rows="3"
+          placeholder="พิมพ์คำตอบและความคิดเห็นของคุณที่นี่..."
+        ></textarea>
+        <div class="reflection-actions">
+          <button type="button" id="btn-copy-reflection" class="btn-copy-reflection">
+            📋 คัดลอกคำตอบเพื่อส่งครู
+          </button>
+          <span id="copy-feedback" class="copy-feedback">คัดลอกเรียบร้อยแล้ว! ✅</span>
+        </div>
+      </div>
+
       <p id="end-progress-text" class="ending-progress"></p>
 
       <div class="ending-actions">
@@ -138,9 +161,9 @@
   </div>
 
   <!-- โหลดไฟล์สคริปต์ตามลำดับ (เปิดไฟล์ index.html ได้โดยตรงไม่ต้องรันเซิร์ฟเวอร์) -->
-  <script src="js/config.js?v=20261031_6"></script>
-  <script src="js/story.js?v=20261031_6"></script>
-  <script src="js/audio.js?v=20261031_6"></script>
-  <script src="js/engine.js?v=20261031_6"></script>
+  <script src="js/config.js?v=20261031_7"></script>
+  <script src="js/story.js?v=20261031_7"></script>
+  <script src="js/audio.js?v=20261031_7"></script>
+  <script src="js/engine.js?v=20261031_7"></script>
 </body>
 </html>
