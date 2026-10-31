@@ -114,12 +114,19 @@
        3. หน้าจอสรุปฉากจบและถอดบทเรียนสุขศึกษา (ENDING & DEBRIEFING MODAL)
        ======================================================================== -->
   <div id="ending-modal">
-    <div class="ending-card">
+    <div class="ending-card" id="ending-card-capture">
+      <div class="card-student-header">
+        <span class="subject-tag">สื่อการเรียนรู้สุขศึกษา ม.1 • ทางแยกหลังตึก</span>
+        <span id="end-student-info" class="student-info-pill">👤 ผู้เรียน: นนท์ (ม.1)</span>
+      </div>
+
       <span id="end-badge" class="ending-badge badge-good">MISSION COMPLETE</span>
       <span id="end-random-slot" style="display: none;"></span>
       <h2 id="end-title">ความจริงหน้าเสาธง</h2>
 
-      <div id="end-cg-preview"></div>
+      <div id="end-cg-preview">
+        <img id="end-cg-img" src="" alt="ภาพเหตุการณ์ฉากจบ" />
+      </div>
 
       <p id="end-summary"></p>
 
@@ -137,19 +144,24 @@
           id="student-reflection-input"
           class="reflection-textarea"
           rows="3"
-          placeholder="พิมพ์คำตอบและความคิดเห็นของคุณที่นี่..."
+          placeholder="พิมพ์คำตอบและความคิดเห็นของคุณที่นี่ก่อนกดบันทึกรูปภาพ..."
         ></textarea>
-        <div class="reflection-actions">
-          <button type="button" id="btn-copy-reflection" class="btn-copy-reflection">
-            📋 คัดลอกคำตอบเพื่อส่งครู
+        <div id="reflection-print-view" class="reflection-print-view" style="display: none;"></div>
+
+        <div class="reflection-actions no-capture">
+          <button type="button" id="btn-save-card-image" class="btn-save-image">
+            📸 บันทึกภาพลงโทรศัพท์ (ส่งครู)
           </button>
-          <span id="copy-feedback" class="copy-feedback">คัดลอกเรียบร้อยแล้ว! ✅</span>
+          <button type="button" id="btn-copy-reflection" class="btn-copy-reflection">
+            📋 คัดลอกข้อความ
+          </button>
+          <span id="save-status-msg" class="copy-feedback">กำลังสร้างรูปภาพ... ⏳</span>
         </div>
       </div>
 
       <p id="end-progress-text" class="ending-progress"></p>
 
-      <div class="ending-actions">
+      <div class="ending-actions no-capture">
         <button type="button" id="btn-replay-choice" class="btn-replay">
           🔄 ลองย้อนกลับไปเลือกทางอื่น
         </button>
@@ -160,10 +172,35 @@
     </div>
   </div>
 
+  <!-- หน้าต่างพรีวิวรูปภาพสำหรับแตะค้างบันทึกลงโทรศัพท์ (Mobile Photo Save Modal) -->
+  <div id="image-preview-modal" class="image-modal">
+    <div class="image-modal-card">
+      <div class="image-modal-header">
+        <h3>📸 บันทึกรูปภาพสำเร็จ!</h3>
+        <button type="button" id="btn-close-image-modal" class="btn-modal-close">✕</button>
+      </div>
+      <p class="image-modal-tip">
+        📱 หากภาพไม่ดาวน์โหลดอัตโนมัติ ให้<strong>แตะค้างที่รูปด้านล่าง</strong> แล้วเลือก <em>"บันทึกภาพ"</em> หรือ <em>"ดาวน์โหลดรูปภาพ"</em> เพื่อส่งครูได้เลยครับ
+      </p>
+      <div class="image-modal-body">
+        <img id="generated-card-preview" src="" alt="ใบงานสุขศึกษา" />
+      </div>
+      <div class="image-modal-actions">
+        <a id="btn-direct-download" href="#" download="ผลการเรียนรู้สุขศึกษา.png" class="btn-download-link">
+          📥 ดาวน์โหลดไฟล์ภาพ (.PNG)
+        </a>
+        <button type="button" id="btn-done-image-modal" class="btn-replay">
+          ตกลง
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- โหลดไฟล์สคริปต์ตามลำดับ (เปิดไฟล์ index.html ได้โดยตรงไม่ต้องรันเซิร์ฟเวอร์) -->
-  <script src="js/config.js?v=20261031_8"></script>
-  <script src="js/story.js?v=20261031_8"></script>
-  <script src="js/audio.js?v=20261031_8"></script>
-  <script src="js/engine.js?v=20261031_8"></script>
+  <script src="js/html2canvas.min.js"></script>
+  <script src="js/config.js?v=20261031_9"></script>
+  <script src="js/story.js?v=20261031_9"></script>
+  <script src="js/audio.js?v=20261031_9"></script>
+  <script src="js/engine.js?v=20261031_9"></script>
 </body>
 </html>

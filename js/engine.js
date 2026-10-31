@@ -77,6 +77,19 @@ window.VNEngine = {
     this.studentReflectionInput = document.getElementById("student-reflection-input");
     this.btnCopyReflection = document.getElementById("btn-copy-reflection");
     this.copyFeedback = document.getElementById("copy-feedback");
+
+    // Elements for Saving Ending Card as Image
+    this.endingCardCapture = document.getElementById("ending-card-capture");
+    this.endStudentInfo = document.getElementById("end-student-info");
+    this.endCgImg = document.getElementById("end-cg-img");
+    this.reflectionPrintView = document.getElementById("reflection-print-view");
+    this.btnSaveCardImage = document.getElementById("btn-save-card-image");
+    this.saveStatusMsg = document.getElementById("save-status-msg");
+    this.imagePreviewModal = document.getElementById("image-preview-modal");
+    this.generatedCardPreview = document.getElementById("generated-card-preview");
+    this.btnDirectDownload = document.getElementById("btn-direct-download");
+    this.btnCloseImageModal = document.getElementById("btn-close-image-modal");
+    this.btnDoneImageModal = document.getElementById("btn-done-image-modal");
   },
 
   bindEvents() {
@@ -173,6 +186,114 @@ window.VNEngine = {
         }
       });
     }
+
+    // ปุ่มบันทึก UI ผลการเรียนรู้เป็นรูปภาพลงเครื่อง (ส่งครู)
+    if (this.btnSaveCardImage) {
+      this.btnSaveCardImage.addEventListener("click", () => {
+        SoundManager.playClick();
+        this.saveCardAsImage();
+      });
+    }
+
+    if (this.btnCloseImageModal) {
+      this.btnCloseImageModal.addEventListener("click", () => {
+        this.imagePreviewModal.classList.remove("visible");
+      });
+    }
+
+    if (this.btnDoneImageModal) {
+      this.btnDoneImageModal.addEventListener("click", () => {
+        this.imagePreviewModal.classList.remove("visible");
+      });
+    }
+  },
+
+  saveCardAsImage() {
+    if (typeof html2canvas === "undefined") {
+      alert("ระบบบันทึกรูปภาพกำลังโหลด กรุณารอสักครู่แล้วลองใหม่อีกครั้งครับ");
+      return;
+    }
+
+    const reflectionText = (this.studentReflectionInput.value || "").trim();
+    if (!reflectionText) {
+      const confirmSave = confirm("คุณยังไม่ได้พิมพ์คำตอบสะท้อนคิด ต้องการบันทึกรูปภาพเลยหรือไม่?");
+      if (!confirmSave) {
+        this.studentReflectionInput.focus();
+        return;
+      }
+    }
+
+    if (this.saveStatusMsg) {
+      this.saveStatusMsg.textContent = "กำลังสร้างรูปภาพ... ⏳";
+      this.saveStatusMsg.classList.add("visible");
+    }
+
+    // สลับเอาข้อความที่พิมพ์มาใส่ใน reflectionPrintView ชั่วคราวเพื่อให้ html2canvas เรนเดอร์ได้คมชัดสมบูรณ์
+    if (this.reflectionPrintView) {
+      this.reflectionPrintView.textContent = reflectionText || "(ไม่ได้ระบุความคิดเห็นเพิ่มเติม)";
+      this.reflectionPrintView.style.display = "block";
+    }
+    if (this.studentReflectionInput) {
+      this.studentReflectionInput.style.display = "none";
+    }
+
+    const filename = `ผลการเรียนรู้สุขศึกษา_${this.state.playerName || "นักเรียน"}_${this.state.currentEndingCode || "ENDING"}.png`;
+
+    html2canvas(this.endingCardCapture, {
+      scale: 2,
+      useCORS: true,
+      allowTaint: true,
+      backgroundColor: "#0f172a",
+      logging: false,
+      ignoreElements: (element) => {
+        return element.classList.contains("no-capture");
+      }
+    }).then((canvas) => {
+      // คืนค่าการแสดงผลเดิม
+      if (this.reflectionPrintView) {
+        this.reflectionPrintView.style.display = "none";
+      }
+      if (this.studentReflectionInput) {
+        this.studentReflectionInput.style.display = "block";
+      }
+      if (this.saveStatusMsg) {
+        this.saveStatusMsg.classList.remove("visible");
+      }
+
+      const imgData = canvas.toDataURL("image/png");
+
+      // ใส่รูปลงใน Modal พรีวิว
+      if (this.generatedCardPreview) {
+        this.generatedCardPreview.src = imgData;
+      }
+      if (this.btnDirectDownload) {
+        this.btnDirectDownload.href = imgData;
+        this.btnDirectDownload.download = filename;
+      }
+
+      // พยายามดาวน์โหลดอัตโนมัติลงเครื่อง
+      try {
+        const link = document.createElement("a");
+        link.download = filename;
+        link.href = imgData;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      } catch (e) {
+        // Fallback to preview modal
+      }
+
+      // แสดง Modal แจ้งเตือนเพื่อให้ผู้ใช้มือถือสามารถแตะค้างเซฟรูปได้แน่นอน 100%
+      if (this.imagePreviewModal) {
+        this.imagePreviewModal.classList.add("visible");
+      }
+    }).catch((err) => {
+      console.error("Capture error:", err);
+      if (this.reflectionPrintView) this.reflectionPrintView.style.display = "none";
+      if (this.studentReflectionInput) this.studentReflectionInput.style.display = "block";
+      if (this.saveStatusMsg) this.saveStatusMsg.classList.remove("visible");
+      alert("เกิดข้อผิดพลาดในการสร้างภาพ กรุณาลองใหม่อีกครั้งครับ");
+    });
   },
 
   showCopyFeedback() {
@@ -532,11 +653,25 @@ window.VNEngine = {
     this.endTitle.textContent = endingData.title;
     this.endSummary.textContent = this.formatText(endingData.summary);
 
-    // รูปประกอบฉากจบ
+    // ข้อมูลชื่อผู้เรียนและวันที่ทำกิจกรรม
+    if (this.endStudentInfo) {
+      const now = new Date();
+      const dateStr = now.toLocaleDateString("th-TH", { day: "numeric", month: "short", year: "2-digit" });
+      this.endStudentInfo.textContent = `👤 ผู้เรียน: ${this.state.playerName} (ม.1) • ${dateStr}`;
+    }
+
+    // รูปประกอบฉากจบ (ทั้ง img และ background)
     const cgConf = GAME_CONFIG.assets.cgs[endingData.cg];
     if (cgConf) {
       const fallbackSVG = this.getSVGCG(cgConf.theme, cgConf.label);
       this.endCgPreview.style.backgroundImage = `url("${cgConf.path}"), url("${fallbackSVG}")`;
+      if (this.endCgImg) {
+        this.endCgImg.src = cgConf.path;
+        this.endCgImg.onerror = () => {
+          this.endCgImg.onerror = null;
+          this.endCgImg.src = fallbackSVG;
+        };
+      }
     }
 
     // รายการบทเรียนสุขศึกษา
