@@ -13,8 +13,8 @@ window.GAME_CONFIG = {
   // ตั้งค่าความเร็วตัวอักษร (มิลลิวินาทีต่อตัวอักษร - ยิ่งน้อยยิ่งพิมพ์เร็ว)
   typingSpeed: 28,
 
-  // แสดงป้ายบอกชื่อไฟล์รูปมุมบนซ้ายหรือไม่ (ตั้งเป็น false เมื่อนำรูปจริงใส่ครบแล้ว)
-  showAssetDebugHint: true,
+  // แสดงป้ายบอกชื่อไฟล์รูปมุมบนซ้ายหรือไม่ (ตั้งเป็น false เพื่อความสวยงาม)
+  showAssetDebugHint: false,
 
   // ค่าเริ่มต้นของตัวละครผู้เล่น
   defaultCharacters: {
@@ -47,27 +47,37 @@ window.GAME_CONFIG = {
   },
 
   // ==========================================================================
-  // พาธรูปภาพทั้งหมด (ตรงกับไฟล์ image_prompts.txt)
+  // พาธรูปภาพทั้งหมด (ตรงกับไฟล์ภาพสไตล์ 2D Anime/Webtoon Event CG)
   // ==========================================================================
   assets: {
     backgrounds: {
       BG_01: {
-        path: "assets/backgrounds/bg-01.png",
+        path: "assets/backgrounds/bg-01.png?v=5",
         label: "BG-01: มุมอับหลังอาคาร 3",
         theme: "alley"
       },
+      BG_MINT_ARM: {
+        path: "assets/backgrounds/bg-mint-arm.png?v=5",
+        label: "BG: มินต์และอาร์มในซอกตึก",
+        theme: "alley"
+      },
       BG_BAS_OFFER: {
-        path: "assets/backgrounds/bg-bas-offer.png?v=2",
+        path: "assets/backgrounds/bg-bas-offer.png?v=5",
         label: "BG: บาสยื่นพอตในซอกตึก",
         theme: "alley"
       },
       BG_02: {
-        path: "assets/backgrounds/bg-02.png",
+        path: "assets/backgrounds/bg-02.png?v=5",
         label: "BG-02: ลานหน้าเสาธงตอนเช้า",
         theme: "morning"
       },
+      BG_TEACHER_PODIUM: {
+        path: "assets/backgrounds/bg-teacher-podium.png?v=5",
+        label: "BG: ครูอำนาจประกาศหน้าเสาธง",
+        theme: "morning"
+      },
       BG_03: {
-        path: "assets/backgrounds/bg-03.png",
+        path: "assets/backgrounds/bg-03.png?v=5",
         label: "BG-03: ห้องฝ่ายปกครอง",
         theme: "office"
       }
@@ -75,17 +85,17 @@ window.GAME_CONFIG = {
 
     sprites: {
       SPRITE_BAS: {
-        path: "assets/sprites/sprite-01-bas.png",
+        path: "assets/sprites/sprite-01-bas.png?v=5",
         label: "SPRITE-01: บาส (ยื่นพอต)",
         character: "bas"
       },
       SPRITE_FRIENDS: {
-        path: "assets/sprites/sprite-02-friends.png",
+        path: "assets/sprites/sprite-02-friends.png?v=5",
         label: "SPRITE-02: มินต์ & อาร์ม",
         character: "friends"
       },
       SPRITE_TEACHER: {
-        path: "assets/sprites/sprite-03-teacher.png",
+        path: "assets/sprites/sprite-03-teacher.png?v=5",
         label: "SPRITE-03: ครูอำนาจ",
         character: "teacher"
       }
@@ -93,38 +103,38 @@ window.GAME_CONFIG = {
 
     avatars: {
       AVATAR_M: {
-        path: "assets/avatars/avatar-m.png",
+        path: "assets/avatars/avatar-m.png?v=5",
         label: "AVATAR-M: นนท์ (ชาย)"
       },
       AVATAR_F: {
-        path: "assets/avatars/avatar-f.png",
+        path: "assets/avatars/avatar-f.png?v=5",
         label: "AVATAR-F: เนย (หญิง)"
       }
     },
 
     cgs: {
       CG_BAS_OFFER: {
-        path: "assets/cgs/cg-bas-offer.png",
+        path: "assets/cgs/cg-bas-offer.png?v=5",
         label: "CG: บาสยื่นพอตหลังตึก",
         theme: "bas_offer"
       },
       CG_GOOD: {
-        path: "assets/cgs/cg-good.png",
+        path: "assets/cgs/cg-good.png?v=5",
         label: "CG-GOOD: รอดพ้นหน้าเสาธง",
         theme: "good"
       },
       CG_BAD_A: {
-        path: "assets/cgs/cg-bad-a.png",
+        path: "assets/cgs/cg-bad-a.png?v=5",
         label: "CG-BAD-A: ห้องปกครอง & แม่ร้องไห้",
         theme: "bad_family"
       },
       CG_BAD_B: {
-        path: "assets/cgs/cg-bad-b.png",
+        path: "assets/cgs/cg-bad-b.png?v=5",
         label: "CG-BAD-B: ทรุดข้างสนาม หายใจไม่ออก",
         theme: "bad_health"
       },
       CG_BAD_C: {
-        path: "assets/cgs/cg-bad-c.png",
+        path: "assets/cgs/cg-bad-c.png?v=5",
         label: "CG-BAD-C: กระเป๋าตังค์ฉีก & ถูกเมิน",
         theme: "bad_money"
       }

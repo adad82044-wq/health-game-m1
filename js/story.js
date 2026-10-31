@@ -18,8 +18,9 @@ window.STORY_DATA = {
   opening: [
     {
       id: "open_1",
-      bg: "BG_01",
-      sprites: ["SPRITE_FRIENDS"],
+      bg: "BG_MINT_ARM",
+      sprites: [],
+      activeSprite: "",
       speaker: "บรรยาย",
       mood: "tense",
       voice: "assets/voices/01_narrator_intro.mp3",
@@ -27,8 +28,9 @@ window.STORY_DATA = {
     },
     {
       id: "open_2",
-      bg: "BG_01",
-      sprites: ["SPRITE_FRIENDS"],
+      bg: "BG_MINT_ARM",
+      sprites: [],
+      activeSprite: "",
       speaker: "player",
       isThought: true,
       mood: "tense",
@@ -38,9 +40,9 @@ window.STORY_DATA = {
     },
     {
       id: "open_3",
-      bg: "BG_01",
-      sprites: ["SPRITE_FRIENDS"],
-      activeSprite: "SPRITE_FRIENDS",
+      bg: "BG_MINT_ARM",
+      sprites: [],
+      activeSprite: "",
       speaker: "มินต์",
       mood: "smirk",
       voice: "assets/voices/03_mint_greet.mp3",
@@ -48,9 +50,9 @@ window.STORY_DATA = {
     },
     {
       id: "open_4",
-      bg: "BG_01",
-      sprites: ["SPRITE_FRIENDS"],
-      activeSprite: "SPRITE_FRIENDS",
+      bg: "BG_MINT_ARM",
+      sprites: [],
+      activeSprite: "",
       speaker: "อาร์ม",
       mood: "mock",
       voice: "assets/voices/04_arm_tease.mp3",
@@ -203,9 +205,9 @@ window.STORY_DATA = {
       text: "เอ๊ะ... แถวข้างๆ ทำไมแหว่งไปวะ? บาส อาร์ม มินต์... หายไปไหนกันหมดทั้งกลุ่มเลย?"
     },
     {
-      bg: "BG_02",
-      sprites: ["SPRITE_TEACHER"],
-      activeSprite: "SPRITE_TEACHER",
+      bg: "BG_TEACHER_PODIUM",
+      sprites: [],
+      activeSprite: "",
       speaker: "บรรยาย",
       mood: "shock",
       sfx: "mic_feedback",
@@ -213,9 +215,9 @@ window.STORY_DATA = {
       text: "วี๊ดดดด...!! (เสียงไมโครโฟนบนเวทีหน้าเสาธงดังหวีดขึ้น พร้อมร่างของครูอำนาจ ฝ่ายปกครองที่ก้าวขึ้นมาถือไมค์ด้วยสีหน้าเคร่งขรึม)"
     },
     {
-      bg: "BG_02",
-      sprites: ["SPRITE_TEACHER"],
-      activeSprite: "SPRITE_TEACHER",
+      bg: "BG_TEACHER_PODIUM",
+      sprites: [],
+      activeSprite: "",
       speaker: "ครูอำนาจ",
       mood: "stern",
       voice: "assets/voices/16_teacher_announce.mp3",
@@ -266,8 +268,8 @@ window.STORY_DATA = {
       },
       {
         bg: "BG_01",
-        sprites: ["SPRITE_TEACHER"],
-        activeSprite: "SPRITE_TEACHER",
+        sprites: [],
+        activeSprite: "",
         speaker: "ครูอำนาจ",
         mood: "stern",
         sfx: "siren",
@@ -325,7 +327,8 @@ window.STORY_DATA = {
       },
       {
         bg: "BG_01",
-        sprites: ["SPRITE_FRIENDS", "SPRITE_BAS"],
+        sprites: [],
+        activeSprite: "",
         speaker: "player",
         mood: "pain",
         sfx: "cough",
@@ -384,8 +387,8 @@ window.STORY_DATA = {
       },
       {
         bg: "BG_01",
-        sprites: ["SPRITE_BAS"],
-        activeSprite: "SPRITE_BAS",
+        sprites: [],
+        activeSprite: "",
         speaker: "บาส",
         mood: "greedy",
         voice: "assets/voices/25_bad_c_bas_money.mp3",
