@@ -443,7 +443,13 @@ window.VNEngine = {
       }
       const randIdx = Math.floor(Math.random() * this.state.unseenBadPool.length);
       const pickedKey = this.state.unseenBadPool.splice(randIdx, 1)[0];
-      this.state.currentBranch = STORY_DATA.bad_endings[pickedKey];
+      const branchKey =
+        pickedKey === "BAD_B" &&
+        this.state.gender === "female" &&
+        STORY_DATA.bad_endings.BAD_B_FEMALE
+          ? "BAD_B_FEMALE"
+          : pickedKey;
+      this.state.currentBranch = STORY_DATA.bad_endings[branchKey];
       this.state.stepIndex = 0;
       this.renderCurrentStep();
       return;

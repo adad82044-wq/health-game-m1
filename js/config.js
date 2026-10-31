@@ -42,6 +42,7 @@ window.GAME_CONFIG = {
     "บาส": { bg: "#dc2626", border: "#f87171", role: "เพื่อนขาโจ๋" },
     "มินต์": { bg: "#db2777", border: "#f472b6", role: "เพื่อนในกลุ่ม" },
     "อาร์ม": { bg: "#d97706", border: "#fbbf24", role: "เพื่อนในกลุ่ม" },
+    "พี่กาย": { bg: "#4f46e5", border: "#818cf8", role: "รุ่นพี่ที่คุยอยู่" },
     "ครูอำนาจ": { bg: "#059669", border: "#34d399", role: "ครูฝ่ายปกครอง" },
     "บรรยาย": { bg: "#475569", border: "#94a3b8", role: "เหตุการณ์" }
   },
@@ -97,8 +98,13 @@ window.GAME_CONFIG = {
         theme: "alley"
       },
       BG_THREE_FRIENDS: {
-        path: "assets/scenes/10_scene_three_friends_alley.png?v=13",
+        path: "assets/scenes/10_scene_three_friends_alley.png?v=14",
         label: "10: เพื่อนทั้ง 3 คน (มินต์ บาส อาร์ม) ยืนกดดันหลังตึก",
+        theme: "alley"
+      },
+      BG_BAD_B_FEMALE: {
+        path: "assets/scenes/11_ending_bad_b_female_guy.png?v=14",
+        label: "11: พี่กายผิดหวังเดินหนี เนยร้องไห้เสียใจ",
         theme: "alley"
       }
     },
@@ -165,8 +171,13 @@ window.GAME_CONFIG = {
         theme: "bad_family"
       },
       CG_BAD_B: {
-        path: "assets/scenes/06_ending_bad_b_health.png?v=8",
+        path: "assets/scenes/06_ending_bad_b_health.png?v=14",
         label: "06: ทรุดข้างสนาม หายใจไม่ออก",
+        theme: "bad_health"
+      },
+      CG_BAD_B_FEMALE: {
+        path: "assets/scenes/11_ending_bad_b_female_guy.png?v=14",
+        label: "11: พี่กายผิดหวังเดินจากไป",
         theme: "bad_health"
       },
       CG_BAD_C: {
