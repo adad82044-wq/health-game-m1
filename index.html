@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>ทางแยกหลังตึก | เกมจำลองสถานการณ์วิชาสุขศึกษา ม.1</title>
-  <link rel="stylesheet" href="css/style.css?v=20261031_7" />
+  <link rel="stylesheet" href="css/style.css?v=20261031_10" />
 </head>
 <body>
 
@@ -67,9 +67,16 @@
       <div class="top-hud">
         <div id="asset-hint-badge" class="asset-badge">📁 ฉาก: BG-01</div>
         <div class="hud-actions">
+          <button type="button" id="btn-fit-toggle" class="hud-btn" title="สลับโหมดภาพ พอดีจอ / เต็มจอ">🖼️ ปรับภาพ</button>
           <button type="button" id="btn-mute" class="hud-btn">🔊 เปิดเสียง</button>
           <button type="button" id="btn-restart-top" class="hud-btn">🏠 หน้าแรก</button>
         </div>
+      </div>
+
+      <!-- แถบแจ้งเตือนแนะนำหมุนจอแนวนอนบนมือถือ -->
+      <div id="rotate-hint" class="rotate-hint">
+        <span>🔄 หมุนโทรศัพท์แนวนอนเพื่อเห็นภาพฉากเต็ม 100%</span>
+        <button type="button" id="btn-close-hint" class="btn-close-hint" title="ปิด">✕</button>
       </div>
 
       <!-- ชั้นฉากหลัง -->
@@ -198,9 +205,9 @@
 
   <!-- โหลดไฟล์สคริปต์ตามลำดับ (เปิดไฟล์ index.html ได้โดยตรงไม่ต้องรันเซิร์ฟเวอร์) -->
   <script src="js/html2canvas.min.js"></script>
-  <script src="js/config.js?v=20261031_9"></script>
-  <script src="js/story.js?v=20261031_9"></script>
-  <script src="js/audio.js?v=20261031_9"></script>
-  <script src="js/engine.js?v=20261031_9"></script>
+  <script src="js/config.js?v=20261031_10"></script>
+  <script src="js/story.js?v=20261031_10"></script>
+  <script src="js/audio.js?v=20261031_10"></script>
+  <script src="js/engine.js?v=20261031_10"></script>
 </body>
 </html>

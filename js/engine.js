@@ -59,6 +59,9 @@ window.VNEngine = {
     this.choicesList = document.getElementById("choices-list");
 
     // Top Bar Controls
+    this.btnFitToggle = document.getElementById("btn-fit-toggle");
+    this.rotateHint = document.getElementById("rotate-hint");
+    this.btnCloseHint = document.getElementById("btn-close-hint");
     this.btnMute = document.getElementById("btn-mute");
     this.btnRestartTop = document.getElementById("btn-restart-top");
 
@@ -137,6 +140,29 @@ window.VNEngine = {
       SoundManager.playClick();
       this.returnToTitle();
     });
+
+    // ปุ่มสลับโหมดภาพ พอดีจอ (Fit) / เต็มจอ (Cover) บนมือถือ
+    if (this.btnFitToggle) {
+      this.btnFitToggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        SoundManager.playClick();
+        const isContain = this.stageContainer.classList.toggle("fit-mode-contain");
+        this.btnFitToggle.textContent = isContain ? "🔍 ภาพเต็มจอ" : "🖼️ ภาพพอดีจอ";
+      });
+    }
+
+    if (this.rotateHint) {
+      this.rotateHint.addEventListener("click", () => {
+        if (this.btnFitToggle) this.btnFitToggle.click();
+      });
+    }
+
+    if (this.btnCloseHint) {
+      this.btnCloseHint.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (this.rotateHint) this.rotateHint.style.display = "none";
+      });
+    }
 
     this.btnReplayChoice.addEventListener("click", () => {
       SoundManager.playClick();

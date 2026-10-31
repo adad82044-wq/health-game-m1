@@ -685,14 +685,18 @@ html, body {
 
 #end-cg-preview {
   width: 100%;
-  height: 200px;
+  aspect-ratio: 16 / 9;
+  height: auto;
   border-radius: 14px;
   overflow: hidden;
   background-size: cover;
   background-position: center;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   margin-bottom: 14px;
-  background-color: #0f172a;
+  background-color: #020617;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #end-cg-preview img {
@@ -1028,7 +1032,73 @@ html, body {
   background: linear-gradient(135deg, #1d4ed8, #1e40af);
 }
 
+/* โหมดปรับขนาดภาพบนมือถือ (Fit Mode Contain / Cover) */
+#vn-stage.fit-mode-contain #bg-layer,
+#vn-stage.fit-mode-contain .cg-frame {
+  background-size: contain !important;
+  background-position: center top !important;
+}
+
+#vn-stage.fit-mode-contain #bg-layer {
+  background-color: #020617;
+}
+
+/* แถบแนะนำการหมุนจอแนวนอนบนมือถือ */
+.rotate-hint {
+  position: absolute;
+  top: 54px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  background: rgba(15, 23, 42, 0.95);
+  border: 1.5px solid #38bdf8;
+  color: #f0f9ff;
+  font-size: 0.82rem;
+  padding: 6px 14px;
+  border-radius: 999px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  display: none;
+  align-items: center;
+  gap: 8px;
+  animation: pulseHint 2s infinite ease-in-out;
+  pointer-events: auto;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+@keyframes pulseHint {
+  0%, 100% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.03); }
+}
+
+.btn-close-hint {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 0 4px;
+}
+
 /* ปรับแต่งสำหรับจอมือถือแนวตั้ง */
+@media (max-width: 768px) and (orientation: portrait) {
+  .rotate-hint {
+    display: flex;
+  }
+
+  /* ปรับโฟกัสภาพในจอแนวตั้งให้เห็นเนื้อหาตรงกลางชัดเจน */
+  #bg-layer, .cg-frame {
+    background-position: center 25%;
+  }
+
+  #vn-stage.fit-mode-contain #bg-layer,
+  #vn-stage.fit-mode-contain .cg-frame {
+    background-size: contain !important;
+    background-position: center 10% !important;
+  }
+}
+
 @media (max-width: 640px) {
   #dialogue-box {
     min-height: 145px;
