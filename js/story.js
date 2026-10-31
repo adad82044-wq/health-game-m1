@@ -70,7 +70,7 @@ window.STORY_DATA = {
     },
     {
       id: "open_choice",
-      bg: "BG_BAS_OFFER",
+      bg: "BG_THREE_FRIENDS",
       sprites: [],
       activeSprite: "",
       speaker: "บรรยาย",
@@ -233,6 +233,7 @@ window.STORY_DATA = {
       speaker: "player",
       isThought: true,
       mood: "shock_relief",
+      avatarMood: "relief",
       sfx: "heartbeat",
       voiceMale: "assets/voices/17_player_realize_m.mp3",
       voiceFemale: "assets/voices/17_player_realize_f.mp3",
@@ -270,7 +271,7 @@ window.STORY_DATA = {
         text: "มันต้องยังงี้ดิวะเพื่อน มาๆ ดูดลึกๆ เลย!"
       },
       {
-        bg: "BG_TEACHER_PODIUM",
+        bg: "BG_TEACHER_CATCH",
         sprites: [],
         activeSprite: "",
         speaker: "ครูอำนาจ",
@@ -393,7 +394,7 @@ window.STORY_DATA = {
         text: "มันต้องยังงี้ดิวะเพื่อน มาๆ ดูดลึกๆ เลย!"
       },
       {
-        bg: "BG_MINT_ARM",
+        bg: "BG_THREE_FRIENDS",
         sprites: [],
         activeSprite: "",
         speaker: "บาส",

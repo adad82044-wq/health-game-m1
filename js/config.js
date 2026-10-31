@@ -87,8 +87,18 @@ window.GAME_CONFIG = {
         theme: "alley"
       },
       BG_BAD_C: {
-        path: "assets/scenes/07_ending_bad_c_wallet.png?v=8",
+        path: "assets/scenes/07_ending_bad_c_wallet.png?v=13",
         label: "07: กระเป๋าตังค์ฉีก & เพื่อนทิ้ง",
+        theme: "alley"
+      },
+      BG_TEACHER_CATCH: {
+        path: "assets/scenes/09_scene_teacher_catch_alley.png?v=13",
+        label: "09: ครูอำนาจบุกจับได้หลังตึก 3",
+        theme: "alley"
+      },
+      BG_THREE_FRIENDS: {
+        path: "assets/scenes/10_scene_three_friends_alley.png?v=13",
+        label: "10: เพื่อนทั้ง 3 คน (มินต์ บาส อาร์ม) ยืนกดดันหลังตึก",
         theme: "alley"
       }
     },
@@ -113,12 +123,28 @@ window.GAME_CONFIG = {
 
     avatars: {
       AVATAR_M: {
-        path: "assets/avatars/avatar_non_male.png?v=8",
-        label: "อวาตาร์ นนท์ (นักเรียนชาย)"
+        path: "assets/avatars/avatar_non_male.png?v=13",
+        label: "อวาตาร์ นนท์ (ปกติ)"
       },
       AVATAR_F: {
-        path: "assets/avatars/avatar_noey_female.png?v=8",
-        label: "อวาตาร์ เนย (นักเรียนหญิง)"
+        path: "assets/avatars/avatar_noey_female.png?v=13",
+        label: "อวาตาร์ เนย (ปกติ)"
+      },
+      AVATAR_M_RELIEF: {
+        path: "assets/avatars/avatar_non_relief.png?v=13",
+        label: "อวาตาร์ นนท์ (โล่งใจ/ภูมิใจ)"
+      },
+      AVATAR_F_RELIEF: {
+        path: "assets/avatars/avatar_noey_relief.png?v=13",
+        label: "อวาตาร์ เนย (โล่งใจ/ภูมิใจ)"
+      },
+      AVATAR_M_STRESS: {
+        path: "assets/avatars/avatar_non_stress.png?v=13",
+        label: "อวาตาร์ นนท์ (เครียด/สำนึกผิด)"
+      },
+      AVATAR_F_STRESS: {
+        path: "assets/avatars/avatar_noey_stress.png?v=13",
+        label: "อวาตาร์ เนย (เครียด/สำนึกผิด)"
       }
     },
 

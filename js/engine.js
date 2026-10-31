@@ -519,7 +519,7 @@ window.VNEngine = {
     this.renderSprites(step.sprites || [], step.activeSprite);
 
     // 4. อัปเดตป้ายชื่อผู้พูดและอวาตาร์
-    this.renderSpeaker(step.speaker, step.isThought);
+    this.renderSpeaker(step.speaker, step.isThought, step.avatarMood);
 
     // 5. พิมพ์ข้อความทีละตัวอักษร
     const formatted = this.formatText(stepText);
@@ -598,7 +598,7 @@ window.VNEngine = {
     });
   },
 
-  renderSpeaker(speakerKey, isThought) {
+  renderSpeaker(speakerKey, isThought, avatarMood) {
     const isPlayer = speakerKey === "player";
     const displayName = isPlayer ? this.state.playerName : speakerKey;
     const colorConf =
@@ -613,11 +613,16 @@ window.VNEngine = {
 
     this.dialogueBox.classList.toggle("thought-mode", Boolean(isThought));
 
-    // แสดงอวาตาร์มุมซ้ายเมื่อเป็นบทพูดของผู้เล่น
+    // แสดงอวาตาร์มุมซ้ายเมื่อเป็นบทพูดของผู้เล่น (เปลี่ยนสีหน้าตามอารมณ์ของฉาก)
     if (isPlayer) {
-      const avKey =
-        this.state.gender === "male" ? "AVATAR_M" : "AVATAR_F";
-      const avConf = GAME_CONFIG.assets.avatars[avKey];
+      const baseKey = this.state.gender === "male" ? "AVATAR_M" : "AVATAR_F";
+      let avKey = baseKey;
+      if (avatarMood === "relief" && GAME_CONFIG.assets.avatars[`${baseKey}_RELIEF`]) {
+        avKey = `${baseKey}_RELIEF`;
+      } else if (avatarMood === "stress" && GAME_CONFIG.assets.avatars[`${baseKey}_STRESS`]) {
+        avKey = `${baseKey}_STRESS`;
+      }
+      const avConf = GAME_CONFIG.assets.avatars[avKey] || GAME_CONFIG.assets.avatars[baseKey];
       const fallbackAv = this.getSVGAvatar(this.state.gender);
       this.playerAvatarBox.style.display = "flex";
       this.playerAvatarBox.innerHTML = `
